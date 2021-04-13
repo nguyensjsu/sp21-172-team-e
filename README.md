@@ -1,2 +1,3 @@
-# Team Project (Replace with your Team Name and Journal)
+# Team Project (Team E)
 
+# Individual reports will be under the folder "Weekly Reports" 
