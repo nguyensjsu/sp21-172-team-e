@@ -20,5 +20,15 @@ public class WebController {
 		return "menu";
 	}
 
+	@GetMapping("/rewards")
+	public String rewards(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+		return "rewards";
+	}
+
+	@GetMapping("/cards")
+	public String cards(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+		return "cards";
+	}
+
 }
 
