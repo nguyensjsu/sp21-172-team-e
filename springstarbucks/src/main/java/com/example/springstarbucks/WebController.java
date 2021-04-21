@@ -10,9 +10,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class WebController {
 
 	@GetMapping("/")
-	public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+	public String home(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 		model.addAttribute("name", name);
 		return "home";
+	}
+
+	@GetMapping("/menu")
+	public String menu(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+		return "menu";
 	}
 
 }
