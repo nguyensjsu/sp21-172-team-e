@@ -54,3 +54,6 @@ Iced Coffee (2.25, 2.75, 3.25)
 Cold Brew (2.95, 3.65, 3.95)
 Espresso (1.95, 2.25, 2.65) **note, this is for single, double, or triple shot**
 
+### Write API for expected transaction ### 
+
+The majority of this code was based on my code from lab 6. However, I saw that Rui organized his code differently than mine (using an interface, etc), so I started making some changes to the format of mine to match. 

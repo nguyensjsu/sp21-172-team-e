@@ -1,60 +1,61 @@
 package com.example.springstarbucks;
 
-import java.util.List;
-import java.util.HashMap;
+import com.example.springstarbucks.servicesImpl.CardServiceImpl;
+import com.example.springstarbucks.servicesImpl.OrderServiceImpl;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.web.bind.annotation.DeleteMapping; 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping; 
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus; 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.http.HttpStatus; 
-import org.springframework.lang.Nullable; 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@RestController
-public class OrderController{
-    private final OrderRepository orderRepo; 
 
-    @Autowired
-    private final CardRepository cardRepo; 
+import com.example.springstarbucks.model.*;
+import java.util.List;
 
-    /* Constructor */ 
-    public StarbucksOrderController(StarbucksOrderRepository repository){
-        this.repository = repository; 
-    }
+@Controller
+public class OrderController {
 
-    /* Message for Status */ 
-    class Message{
-        private String status; 
+	@Autowired
+	CardServiceImpl cardServiceImpl;
 
-        public String getStatus(){
-            return status; 
-        }
+	@Autowired
+	OrderServiceImpl orderServiceImpl;
+    
+    //*To edit to match new file organization 
+
+	// /* Constructor */ 
+    // public StarbucksOrderController(StarbucksOrderRepository repository){
+    //     this.repository = repository; 
+    // }
+
+    // /* Message for Status */ 
+    // class Message{
+    //     private String status; 
+
+    //     public String getStatus(){
+    //         return status; 
+    //     }
         
-        public void setStatus(String msg){
-            status = msg; 
-        }
-    }
+    //     public void setStatus(String msg){
+    //         status = msg; 
+    //     }
+    // }
 
-    @GetMapping("/orders")
-    List<StarbucksOrder> all(){
-        return orderRepo.findAll(); 
-    }
+    // @GetMapping("/orders")
+    // List<StarbucksOrder> all(){
+    //     return orderRepo.findAll(); 
+    // }
 
-    @DeleteMapping("/orders")
-    Message deleteAll(){
-        orderRepo.deleteAllInBatch(); 
-        orders.clear(); 
-        Message msg = new Message(); 
-        msg.setStatus("All orders have been cleared."); 
-        return msg; 
-    }
+    // @DeleteMapping("/orders")
+    // Message deleteAll(){
+    //     orderRepo.deleteAllInBatch(); 
+    //     orders.clear(); 
+    //     Message msg = new Message(); 
+    //     msg.setStatus("All orders have been cleared."); 
+    //     return msg; 
+    // }
 }
