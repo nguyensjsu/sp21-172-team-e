@@ -4,7 +4,7 @@ This week, Rui and I both worked on the API. We mutually decided that he would w
 
 
 ###My Task Cards###
-![My task cards this week](/images/Week1_cards.png)
+![My task cards this week](images/Week1_cards.png)
 
 My tasks were to: 
 1. Create a list of expected transactions 
