@@ -36,11 +36,5 @@ public class WebController {
 		model.addAttribute("drink", drink);
 		return "drinktemplate";
 	}
-<<<<<<< Updated upstream
-
-
-=======
-	
->>>>>>> Stashed changes
 }
 
