@@ -8,19 +8,12 @@
         <link rel="stylesheet" th:href="@{/styles.css}" />
         
     </head>
-    <h1 align="center"> Menu </h1>
+    <h1 align="center"> Drink </h1>
     <div th:include="home.html::base">
     </div>
 
     <body> 
-        <h1> Welcome to Menu Page</h1>
-        <div class="grid-container">
-            <div class="grid-item item1">Drinks</div>
-            <a href = "/menu/Frappe"> <div class="grid-item item2"> Frappe</div> </a>
-            <a href = "/menu/Frappe"><div class="grid-item item3" >Cappucino</div></a>
-            <a href = "/menu/Frappe"><div class="grid-item item4" >Latte</div></a>
-            <a href = "/menu/Frappe"><div class="grid-item item5" >Smoothie</div></a>
-          </div>
+        <h1> Learn More About This Drink: th:value=${drink} </h1>
     </body>
 
 </html>

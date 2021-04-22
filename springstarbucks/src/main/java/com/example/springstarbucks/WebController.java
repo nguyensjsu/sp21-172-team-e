@@ -16,19 +16,27 @@ public class WebController {
 	}
 
 	@GetMapping("/menu")
-	public String menu(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+	public String menu(String name, Model model) {
 		return "menu";
 	}
 
 	@GetMapping("/rewards")
-	public String rewards(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+	public String rewards(String name, Model model) {
 		return "rewards";
 	}
 
 	@GetMapping("/cards")
-	public String cards(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+	public String cards(String name, Model model) {
 		return "cards";
 	}
+
+	//Goal: pass the drink value into the drink template
+	@GetMapping("/menu/drink/")
+	public String drinktemplate(@RequestParam(value="drink", required=true) String drink, Model model) {
+		model.addAttribute("drink", drink);
+		return "drinktemplate";
+	}
+
 
 }
 
