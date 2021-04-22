@@ -37,6 +37,5 @@ public class WebController {
 		return "drinktemplate";
 	}
 
-
 }
 
