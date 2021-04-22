@@ -26,12 +26,12 @@ public class OrderController{
     @Autowired
     private final CardRepository cardRepo; 
 
-    /*Constructor*/ 
+    /* Constructor */ 
     public StarbucksOrderController(StarbucksOrderRepository repository){
         this.repository = repository; 
     }
 
-    /*Message for Status*/ 
+    /* Message for Status */ 
     class Message{
         private String status; 
 
@@ -44,4 +44,17 @@ public class OrderController{
         }
     }
 
+    @GetMapping("/orders")
+    List<StarbucksOrder> all(){
+        return orderRepo.findAll(); 
+    }
+
+    @DeleteMapping("/orders")
+    Message deleteAll(){
+        orderRepo.deleteAllInBatch(); 
+        orders.clear(); 
+        Message msg = new Message(); 
+        msg.setStatus("All orders have been cleared."); 
+        return msg; 
+    }
 }
