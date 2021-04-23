@@ -120,4 +120,92 @@ public class OrderController{
         repository.save( active ) ;
         return card ; 
     }
+
+    /*Create new order*/
+    @PostMapping("/order/register/{regid}")
+    @ResponseStatus(HttpStatus.CREATED)
+    StarbucksOrder newOrder(@PathVariable String regid, @RequestBody StarbucksOrder order){
+        //TODO: Set error codes for inactive order, etc 
+        // set price
+        double price = 0.0;
+        switch (order.getDrink()) {
+        case "Latte":
+            switch (order.getSize()) {
+            case "Tall":
+                price = 3.25;
+                break;
+            case "Grande":
+                price = 3.95;
+                break;
+            case "Venti":
+            case "Your Own Cup":
+                price = 4.25;
+                break;
+            default:
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Size!");
+            }
+            break;
+        case "Frappuccino":
+            switch (order.getSize()) {
+            case "Tall":
+                price = 4.75;
+                break;
+            case "Grande":
+                price = 5.25;
+                break;
+            case "Venti":
+            case "Your Own Cup":
+                price = 5.75;
+                break;
+            default:
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Size!");
+            }
+            break;
+        case "Fresh Coffee":
+            switch (order.getSize()) {
+            case "Tall":
+                price = 1.95;
+                break;
+            case "Grande":
+                price = 2.45;
+                break;
+            case "Venti":
+            case "Your Own Cup":
+                price = 2.75;
+                break;
+            default:
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Size!");
+            }
+            break;
+        case "Cappuccino":
+            switch (order.getSize()) {
+                case "Tall":
+                    price = 3.25;
+                    break;
+                case "Grande":
+                    price = 3.95;
+                    break;
+                case "Venti":
+                case "Your Own Cup":
+                    price = 4.25;
+                    break;
+                default:
+                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Size!");
+                }
+                break;
+            default:
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Drink!"); 
+            }
+            double tax = 0.0725;
+            double total = price + (price * tax);
+            double scale = Math.pow(10, 2);
+            double rounded = Math.round(total * scale) / scale;
+            order.setTotal(rounded);
+
+            order.setStatus("Ready for Payment.");
+            StarbucksOrder new_order = repository.save(order);
+            orders.put(regid, new_order);
+
+            return new_order;
+        }
 }

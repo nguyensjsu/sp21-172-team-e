@@ -20,42 +20,59 @@ import java.util.List;
 public class OrderController {
 
 	@Autowired
-	CardServiceImpl cardServiceImpl;
+	//get card service?
 
 	@Autowired
-	OrderServiceImpl orderServiceImpl;
+	OrderService OrderService;
     
     //*To edit to match new file organization 
 
-	// /* Constructor */ 
-    // public StarbucksOrderController(StarbucksOrderRepository repository){
-    //     this.repository = repository; 
-    // }
+    //get all orders
+	@RequestMapping(value="/orders", method=RequestMethod.GET)
+	@ResponseBody
+	public List<StarbucksOrder> all() {
+		return OrderService.all();
+	}
 
-    // /* Message for Status */ 
-    // class Message{
-    //     private String status; 
+	//Create new order
+	@RequestMapping(value="/order/register", method=RequestMethod.POST)
+	@ResponseBody
+	StarbucksOrder newOrder(@PathVariable String regid, @RequestBody StarbucksOrder order){
+		return OrderService.newOrder(regid, order);
+	}
 
-    //     public String getStatus(){
-    //         return status; 
-    //     }
-        
-    //     public void setStatus(String msg){
-    //         status = msg; 
-    //     }
-    // }
 
-    // @GetMapping("/orders")
-    // List<StarbucksOrder> all(){
-    //     return orderRepo.findAll(); 
-    // }
+	//delete all orders
+	@RequestMapping(value="/orders", method = RequestMethod.DELETE)
+	@ResponseBody
+	public void deleteAll(){
+		OrderService.deleteAll();
+	}
 
-    // @DeleteMapping("/orders")
-    // Message deleteAll(){
-    //     orderRepo.deleteAllInBatch(); 
-    //     orders.clear(); 
-    //     Message msg = new Message(); 
-    //     msg.setStatus("All orders have been cleared."); 
-    //     return msg; 
-    // }
+
+	//get order details
+	@RequestMapping(value="/findorder", method = RequestMethod.GET)
+	@ResponseBody
+	StarbucksOrder getActiveOrder(@PathVariable String regid, HttpServletResponse response) {
+		return OrderService.getSpecificOrder(regid, response);
+	}
+
+
+	//clear active order
+	@RequestMapping(value="/deleteorder", method = RequestMethod.DELETE)
+	@ResponseBody
+	String deleteActiveOrder(@PathVariable String regid) {
+		return OrderService.deleteActiveOrder(regid);
+	}
+
+
+	//Process Order payment
+	@RequestMapping(value="/order/pay", method=RequestMethod.POST)
+	@ResponseBody
+	public StarbucksCard processOrder(@PathVariable String regid, @PathVariable String cardnum) {
+		return OrderService.ProcessOrder(regid, cardnum);
+	}
+
+	//TODO: Verify that all of these Request mappings work
+    //If not, return to previous getmapping methods 
 }

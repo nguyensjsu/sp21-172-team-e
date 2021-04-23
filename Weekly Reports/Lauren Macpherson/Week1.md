@@ -43,8 +43,8 @@ I found this [list of Starbucks items and prices](https://www.fastfoodprice.com/
 The drinks we'll offer are listed below, with the prices listed as (tall, grande, venti/customer's cup). 
 
 **Current items (referenced from webpage offerings so far)**
-Frappe (4.75, 5.25, 5.75)
-Cappucino (3.25, 3.95, 4.25)
+Frappuccino (4.75, 5.25, 5.75)
+Cappuccino (3.25, 3.95, 4.25)
 Latte (3.25, 3.95, 4.25)
 Fresh Coffee (1.95, 2.45, 2.75) 
 
@@ -57,3 +57,5 @@ Espresso (1.95, 2.25, 2.65) **note, this is for single, double, or triple shot**
 ### Write API for expected transaction ### 
 
 The majority of this code was based on my code from lab 6. However, I saw that Rui organized his code differently than mine (using an interface, etc), so I started making some changes to the format of mine to match. 
+
+Testing is still in progress for the order APIs. 
