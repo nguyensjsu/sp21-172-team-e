@@ -41,4 +41,9 @@ http://localhost:8080/card/activate/?cardnumber=498498082&code=425
 
 http://localhost:8080/cards
 
-    
+
+### Challenge 
+
+This task is very similar to the Lab 6, but I didn't do well on it. I have to learned Spring Rest API from https://spring.io/guides/tutorials/rest/, and finally finished my card api version 1.
+While I was working on the API, I put WebController and APIController together，but later I realized I should split them to make our structure more clear.
+
