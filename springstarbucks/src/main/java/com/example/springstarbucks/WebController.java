@@ -36,6 +36,5 @@ public class WebController {
 		model.addAttribute("drink", drink);
 		return "drinktemplate";
 	}
-
 }
 
