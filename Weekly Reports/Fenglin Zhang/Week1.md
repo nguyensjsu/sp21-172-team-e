@@ -21,4 +21,4 @@ https://github.com/nguyensjsu/sp21-172-team-e/commit/f3b6c6049800aef46ee45fcbf19
 
 ### Challenge 
 
-need more time to understand how Thymeleaf works and it sytax for insert narbar.html into index.html
+In order to understand how Thymeleaf works and it sytax for insert narbar.html into index.html, I did a couple of research, read Thymeleaf documentation. Fortunately, I got something helpful from Stack Overflow. However, it does not work really work. More time needed.
