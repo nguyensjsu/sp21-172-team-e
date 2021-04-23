@@ -18,16 +18,27 @@ For next week, I will convert h2 database to mysql database.
 #### Starbucks cards service
 
 1.	Health check [GET]
+
 http://localhost:8080/ping
+
 2.	Get all the starbucks card [GET]
+
 http://localhost:8080/getcards
+
 3.	Create a new Starbucks Card [POST]
+
 http://localhost:8080/newcard?cardNumber=498498082&cardCode=425&balance=20.0&activated=false&status=New card
+
 4.	Find specific Starbucks card [GET]
+
 http://localhost:8080/findcard/?cardnumber=498498082
+
 5.	Activate specific Starbucks card [POST]
+
 http://localhost:8080/card/activate/?cardnumber=498498082&code=425
+
 6.	Delete all Starbucks cards [DELETE]
+
 http://localhost:8080/cards
 
     
