@@ -17,8 +17,8 @@ build signup page with bootstrap styling
 
 figured out how to use bootstrap to make a popout window for login and signup forms
 
-
+https://github.com/nguyensjsu/sp21-172-team-e/commit/f3b6c6049800aef46ee45fcbf19f07124a1be90e
 
 ### Challenge 
 
-need more time to understand how Thymeleaf works, and how to insert narbar.html into index.htel
+need more time to understand how Thymeleaf works and it sytax for insert narbar.html into index.html
