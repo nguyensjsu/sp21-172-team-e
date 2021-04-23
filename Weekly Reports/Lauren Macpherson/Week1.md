@@ -12,6 +12,7 @@ My tasks were to:
 2. Create a price list for menu items 
 3. Write API for expected transactions. 
 
+
 ### Task 1: Create a list of expected transactions ###
 
 From the project page, there was a list of expected APIs we would need to use. We could edit these as needed, but this provided a good base for what we would be making. 
@@ -33,8 +34,6 @@ Get a list of all active orders (for all registers)
 
 **DELETE     /orders**
 Delete all Orders (Use for Unit Testing Teardown)
-
-Once we have gotten further into the project, I may revise this list of transactions if we find another kind of transaction we need. 
 
 ### Create a price list of expected transactions ###
 
