@@ -27,7 +27,7 @@ public class OrderController{
     private final CardRepository cardRepo; 
 
     /* Constructor */ 
-    public StarbucksOrderController(StarbucksOrderRepository repository){
+    public OrderController(OrderRepository repository){
         this.repository = repository; 
     }
 
