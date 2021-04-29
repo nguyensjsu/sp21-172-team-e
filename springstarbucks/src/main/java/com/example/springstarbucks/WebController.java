@@ -1,6 +1,7 @@
 package com.example.springstarbucks;
 
 import com.example.springstarbucks.drinks.Drink;
+import com.example.springstarbucks.drinks.DrinkParser;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +40,8 @@ public class WebController {
 		model.addAttribute("drinkname", drinkname);
 
 
-		//Drink drink = new Drink(drinkname);
+		Drink drink = new DrinkParser(drinkname).setDrink();
+		System.out.println("drink name is...." + drink.message());
 
 		return "drinktemplate";
 	}
