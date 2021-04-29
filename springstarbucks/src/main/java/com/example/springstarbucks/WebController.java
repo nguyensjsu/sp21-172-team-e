@@ -1,5 +1,7 @@
 package com.example.springstarbucks;
 
+import com.example.springstarbucks.drinks.Drink;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,9 +36,11 @@ public class WebController {
 	//Goal: pass the drink value into the drink template
 	@GetMapping("/menupage/{drinkname}")
 	public String drinktemplate(@PathVariable("drinkname") String drinkname, Model model) {
-		System.out.println("DRINK NAME: " + drinkname);
 		model.addAttribute("drinkname", drinkname);
-		System.out.println("MODEL: " + model);
+
+
+		//Drink drink = new Drink(drinkname);
+
 		return "drinktemplate";
 	}
 }
