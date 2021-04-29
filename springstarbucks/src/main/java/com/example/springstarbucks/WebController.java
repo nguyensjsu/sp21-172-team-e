@@ -39,9 +39,10 @@ public class WebController {
 	public String drinktemplate(@PathVariable("drinkname") String drinkname, Model model) {
 		model.addAttribute("drinkname", drinkname);
 
-
 		Drink drink = new DrinkParser(drinkname).setDrink();
-		System.out.println("drink name is...." + drink.message());
+		String message = drink.getMessage() + " costs " + drink.getCost();
+
+		model.addAttribute("message", message);
 
 		return "drinktemplate";
 	}
