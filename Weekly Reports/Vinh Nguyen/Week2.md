@@ -1,7 +1,7 @@
 # Week 2 Notes for Vinh Nguyen
 
 ### self notes
-* 
+* Some things to add next week: Image, connect to API button in the frontend.
 
 # Snapshot
 * ![pic2](images/week2snap.png)
@@ -11,6 +11,9 @@
 ## Accomplishments (only the notable commits, I left out the bug fix commits... etc)
 * https://github.com/nguyensjsu/sp21-172-team-e/commit/256c458566cdb3795ee1300d9a8a8e9c6a1edbec
     * Added web controller features to allow passing thymeleaf url's to the controller creating dynamic html files that change based on what the url parameters.  
+* https://github.com/nguyensjsu/sp21-172-team-e/commit/f5e8c274a6e8dfac05a567836af773a413f11e2e
+    * Added drink details for each drink inside a class through an interface. 
+
 ## Challenges
 
 * I figured out how to pass the variables to a drinks template so we don't have to hard code each html file when we need to change drink
