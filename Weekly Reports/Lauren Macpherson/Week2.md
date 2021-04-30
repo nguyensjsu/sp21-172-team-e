@@ -32,13 +32,13 @@ sdk use java 11.0.10.j9-adpt
 For testing purposes, connecting MySQL as root and allowing access to user from all hosts (this should not be used in our final copy) 
 
 ```
-docker run -d --name mysql -td -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cmpe172 mysql:8.0
+docker run -d --name starbucks-database -td -p 3306:3306 -e MYSQL_ROOT_PASSWORD=sb-db-password mysql:8.0
 ```
 
 Docker command to access MySQL Container: 
 ```
 docker exec -it mysql bash
-mysql --password
+starbucks-database --password
 ```
 
 MySQL prompt commands: 
@@ -53,3 +53,30 @@ Terminal testing prompts, change parameters as necessary:
 curl localhost:8080/demo/add -d name=First -d email=someemail@someemailprovider.com
 curl 'localhost:8080/demo/all'
 ```
+
+Once the database is completed, remember to edit user permissions for the user that created the database. 
+
+![Terminal Screenshot 1](images/Week2_MySQL1.png)
+
+Creating database:
+![Terminal Screenshot 2](images/Week2_MySQL2.png)
+
+Now testing commands: 
+
+Error: run into curl (7) error from below. Trying to run the application via gradle bootRun:
+
+![Not building properly](images/Week2_RunError.png)
+
+For that reason, I will be keeping this branch un-merged until I resolve this issue. 
+
+## Possible issues/errors: 
+
+```
+curl: (7) Failed to connect to localhost port 8080: Connection refused
+```
+
+Try: 
+* ./gradlew bootRun
+* run the application in one terminal, use curl commands in the other
+* docker restart mysql- when mysql is exited incorectly, two MySQL servers attempting to be run on the same port 
+
