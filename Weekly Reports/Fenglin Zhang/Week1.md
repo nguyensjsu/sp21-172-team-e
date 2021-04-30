@@ -9,16 +9,17 @@ Since there are a couple of compile errors when run the project, the index, sign
 
 ### Accomplishment
 
-build index page with bootstrap styling 
+This week, I finished Starbucks Card service API with a H2 database.
 
-build login page with bootstrap styling 
+https://github.com/nguyensjsu/sp21-172-team-e/commit/e959803301a9a9a4f22614aeedb658e3689db0bb
 
-build signup page with bootstrap styling 
+For next week, I will convert h2 database to mysql database.
+### API Documentation
+#### Starbucks cards service
 
-figured out how to use bootstrap to make a popout window for login and signup forms
 
 https://github.com/nguyensjsu/sp21-172-team-e/commit/f3b6c6049800aef46ee45fcbf19f07124a1be90e
 
 ### Challenge 
 
-In order to understand how Thymeleaf works and it sytax for insert narbar.html into index.html, I did a couple of research, read Thymeleaf documentation. Fortunately, I got something helpful from Stack Overflow. However, it does not work really work. More time needed.
+
