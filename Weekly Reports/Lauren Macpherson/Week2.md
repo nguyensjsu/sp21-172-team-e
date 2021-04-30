@@ -1,4 +1,4 @@
-
+[Link to Pull Request](https://github.com/nguyensjsu/sp21-172-team-e/pull/7)
 
 ## Week 2 Report ##
 
@@ -79,4 +79,24 @@ Try:
 * ./gradlew bootRun
 * run the application in one terminal, use curl commands in the other
 * docker restart mysql- when mysql is exited incorectly, two MySQL servers attempting to be run on the same port 
+
+### MySQL GC Deployment
+
+[Quickstart for CloudSQL for MySQL](https://cloud.google.com/sql/docs/mysql/quickstart)
+* Create & connect MySQL instance 
+* Use cloud shell/terminal to create database and upload data 
+* Cleanup
+* TODO: Create sql file to populate a database for testing purposes
+
+[Connecting from Google Kubernetes Engine](https://cloud.google.com/sql/docs/mysql/connect-kubernetes-engine)
+* Connect the application running in GKE to a Cloud SQL sequence- connect app to database 
+* Requirements: 
+   * GKE cluster with kubectl command-line tool. [See here for more information](https://cloud.google.com/kubernetes-engine/docs/quickstart)
+   * Cloud SQL Instance. Previous point was basic version, [see more detailed documentation here](https://cloud.google.com/sql/docs/mysql/create-instance)
+   * A MySQL user account on the instance 
+
+[Set up a Cluster to connect to SQL on private IP](https://medium.com/@johnjjung/how-to-setup-a-kubernetes-cluster-that-can-connect-to-sql-on-gcp-using-private-ips-c0cd41ea3a4e)
+* Settings needed when creating Cloud SQL 
+* Settings for Kubernetes Cluster
+* Helpful installations
 
