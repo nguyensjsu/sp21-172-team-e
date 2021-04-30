@@ -6,8 +6,10 @@ This week, I worked on testing Order API and Kong API Gateway. For this project,
 
 ### My Task Cards
 
-* ![pic1](images/week2_1.png)
-* ![pic1](images/week2_2.png)
+* ![pic1](images/Week2_1.png)
+* ![pic1](images/Week2_2.png)
+
+PR: https://github.com/nguyensjsu/sp21-172-team-e/pull/8
 
 #### Test Order API
 I fixed some routing issue and tested the Starbucks Card REST API from Postman. All API can run successfully.
