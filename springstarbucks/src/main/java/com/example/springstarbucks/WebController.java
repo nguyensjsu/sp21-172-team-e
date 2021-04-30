@@ -43,6 +43,9 @@ public class WebController {
 		String message = drink.getMessage() + " costs " + drink.getCost();
 
 		model.addAttribute("message", message);
+		String image = "/images/" + drinkname.toLowerCase() + ".png";
+		System.out.println("Inserting drink name from: " + image);
+		model.addAttribute("drink_image",image);
 
 		return "drinktemplate";
 	}
