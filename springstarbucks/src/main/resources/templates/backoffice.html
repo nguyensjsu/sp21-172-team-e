@@ -1,0 +1,23 @@
+<!-- TEST PAGE for Backoffice -->
+<!-- Backoffice Functions: -->
+<!-- See any customer's rewards, fix any issues (i.e. add missing credit) -->
+<!-- TODO: change field names, add additional lookup methods? -->>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
+        <!-- FORM SECTION -->
+    <form name="form" th:object="${paymentsCommand}" method="post" th:action="@{/}">
+        <label for="ccnum">Starbucks Rewards Card Number</label>
+              <input type="text" id="ccnum" name="cardnumber" placeholder="555555555" th:field="*{creditCardNo}">
+              <div class="alert alert-warning" th:if="${#fields.hasErrors('creditCardNo')}" th:errors="*{creditCardNo}"></div> 
+        <!-- SUBMISSION BUTTON -->
+        <input type="submit" name="action" id="process-payment" value="Process Payment" class="btn">
+    </form>
+  </body>
+</html>
