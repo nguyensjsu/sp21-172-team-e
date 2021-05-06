@@ -8,7 +8,8 @@
 ## Accomplishments (only the notable commits, I left out the bug fix commits... etc)
 * https://github.com/nguyensjsu/sp21-172-team-e/commit/a8e5b380dff7cebec1ed55fb13bb9fbeec97c541
     * Added the routing page for orders and added details for each drink
-* 
+* https://github.com/nguyensjsu/sp21-172-team-e/commit/4a4211395d05ae01e1ff79b3ffd93dc0dc7a2a1a
+    * Added the form page for customers to input data
 
 ## Challenges
 
@@ -18,4 +19,5 @@
     * `Caused by: java.lang.IllegalStateException: Neither BindingResult nor plain target object for bean name 'command' available as request attribute`
         * Attempt 1: I'm probably missing the commands.java file for the inputs
             * **turns out I just needed to add a GetMapping and a PostMapping**
+
     
