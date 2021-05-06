@@ -6,7 +6,7 @@ public class FreshCoffee implements Drink{
     @Override
     public String getMessage() {
         // TODO Auto-generated method stub
-        return "This is Fresh Coffee";
+        return "With an airtight seal, new Starbucks® Fresh Brew is the easiest way to open a fresher day, every day.";
     }
 
     @Override

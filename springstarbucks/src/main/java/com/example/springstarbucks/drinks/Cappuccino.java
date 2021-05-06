@@ -5,7 +5,7 @@ public class Cappuccino implements Drink{
     @Override
     public String getMessage() {
         
-        return "This is Cappuccino";
+        return "Dark, rich espresso lies in wait under a smoothed and stretched layer of thick milk foam. An alchemy of barista artistry and craft.";
     }
 
     @Override

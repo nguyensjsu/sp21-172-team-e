@@ -8,15 +8,13 @@
         <link rel="stylesheet" th:href="@{/styles.css}" />
         
     </head>
-    <h1 align="center"> Drink </h1>
+    <h1 align="center"> Payment information </h1>
     <div th:include="home.html::base">
     </div>
 
     <body> 
-        <h1> Learn more about this drink: <span th:text="${drinkname}"></span></h1>
-        <p th:text="${message}"></p>
-        <img th:src="${drink_image}" alt="${drinkname}" style="width:100px;height:100px">
-        <button type="submit" value = "action"><a href = "/pay">Add to Cart</a></button>
+        <h1> Pay for your order</h1>
+
     </body>
 
 </html>

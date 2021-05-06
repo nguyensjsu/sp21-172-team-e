@@ -4,7 +4,7 @@ public class Frappe implements Drink {
 
 
     public String getMessage() {
-        return "This is Frappe";
+        return "Coffee meets milk and ice in a blender for a rumble-and-tumble togetherness to create one of our most-beloved original Frappuccino® blended beverages.";
     }
     @Override
     public String getCost() {
