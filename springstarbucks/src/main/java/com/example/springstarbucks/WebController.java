@@ -49,7 +49,7 @@ public class WebController {
 
 		Drink drink = new DrinkParser(drinkname).setDrink();
 		String message = drink.getMessage() + " costs " + drink.getCost();
-
+		model.addAttribute("cost", drink.getCost());
 		model.addAttribute("message", message);
 		String image = "/images/" + drinkname.toLowerCase() + ".png";
 		model.addAttribute("drink_image",image);

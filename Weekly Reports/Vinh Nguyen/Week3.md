@@ -10,6 +10,8 @@
     * Added the routing page for orders and added details for each drink
 * https://github.com/nguyensjsu/sp21-172-team-e/commit/4a4211395d05ae01e1ff79b3ffd93dc0dc7a2a1a
     * Added the form page for customers to input data
+* https://github.com/nguyensjsu/sp21-172-team-e/commit/b7f6fd748b92c8aa08ae208fce9a1de036ac83db
+    * Added form validation for order processing.
 
 ## Challenges
 

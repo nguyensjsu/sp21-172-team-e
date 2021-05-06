@@ -119,19 +119,29 @@ public class PaymentController {
         }
     }
 
-    @GetMapping("/pay")
-    public String getAction( @ModelAttribute("command") PaymentsCommand command, Model model) {
+    @GetMapping("/pay/{drinkname}")
+    public String getAction( @PathVariable("drinkname") String drinkname,
+                             @ModelAttribute("command") PaymentsCommand command, Model model ) {
 
+        Drink drink = new DrinkParser(drinkname).setDrink();
+		String message = drink.getMessage() + " costs " + drink.getCost();
+		model.addAttribute("cost", drink.getCost());
+		model.addAttribute("message", message);
+		String image = "/images/" + drinkname.toLowerCase() + ".png";
+		model.addAttribute("drink_image",image);
+
+        System.out.println("model in pay " + model);
 
                         
         return "payment" ;
 
     } 
 
-    @PostMapping("/pay")
-    public String postAction(@Valid @ModelAttribute("command") PaymentsCommand command,
-            @RequestParam(value = "action", required = true) String action, Errors errors, Model model,
-            HttpServletRequest request) {
+    @PostMapping("/pay/{drinkname}")
+    public String postAction(@PathVariable("drinkname") String drinkname,
+                             @Valid @ModelAttribute("command") PaymentsCommand command,
+                             @RequestParam(value = "action", required = true) String action, Errors errors, Model model,
+                             HttpServletRequest request) {
 
                 ErrorMessages msgs = new ErrorMessages();
 
