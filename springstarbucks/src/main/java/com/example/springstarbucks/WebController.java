@@ -1,13 +1,22 @@
 package com.example.springstarbucks;
 
+import javax.servlet.http.HttpServletRequest;
+
+import javax.validation.Valid;
+
 import com.example.springstarbucks.drinks.Drink;
 import com.example.springstarbucks.drinks.DrinkParser;
+import com.example.springstarbucks.orderapi.PaymentsCommand;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -51,8 +60,22 @@ public class WebController {
 	}
 
 	@GetMapping("/pay")
-	public String pay() {
+    public String getAction( @ModelAttribute("command") PaymentsCommand command, 
+                            Model model) {
+
+        return "payment" ;
+
+        } 
+
+	@PostMapping("/pay")
+	public String postAction(@Valid @ModelAttribute("command") PaymentsCommand command,  
+			@RequestParam(value = "action", required = true) String action, Errors errors, Model model,
+			HttpServletRequest request) {
+
+		model.addAttribute( "message", "Thank You for Your Payment!") ;
+		
 		return "payment";
+
 	}
 
 }
