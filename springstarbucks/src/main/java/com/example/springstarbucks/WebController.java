@@ -2,7 +2,6 @@ package com.example.springstarbucks;
 
 import javax.servlet.http.HttpServletRequest;
 
-import javax.validation.Valid;
 
 import com.example.springstarbucks.drinks.Drink;
 import com.example.springstarbucks.drinks.DrinkParser;
@@ -57,25 +56,6 @@ public class WebController {
 
 
 		return "drinktemplate";
-	}
-
-	@GetMapping("/pay")
-    public String getAction( @ModelAttribute("command") PaymentsCommand command, 
-                            Model model) {
-
-        return "payment" ;
-
-        } 
-
-	@PostMapping("/pay")
-	public String postAction(@Valid @ModelAttribute("command") PaymentsCommand command,  
-			@RequestParam(value = "action", required = true) String action, Errors errors, Model model,
-			HttpServletRequest request) {
-
-		model.addAttribute( "message", "Thank You for Your Payment!") ;
-		
-		return "payment";
-
 	}
 
 }
