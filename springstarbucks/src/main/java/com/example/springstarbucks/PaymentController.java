@@ -126,10 +126,8 @@ public class PaymentController {
         Drink drink = new DrinkParser(drinkname).setDrink();
 		String message = drink.getMessage() + " costs " + drink.getCost();
 		model.addAttribute("cost", drink.getCost());
-		model.addAttribute("message", message);
 		String image = "/images/" + drinkname.toLowerCase() + ".png";
 		model.addAttribute("drink_image",image);
-
         System.out.println("model in pay " + model);
 
                         
@@ -142,6 +140,14 @@ public class PaymentController {
                              @Valid @ModelAttribute("command") PaymentsCommand command,
                              @RequestParam(value = "action", required = true) String action, Errors errors, Model model,
                              HttpServletRequest request) {
+                
+                Drink drink = new DrinkParser(drinkname).setDrink();
+                String message = drink.getMessage() + " costs " + drink.getCost();
+                model.addAttribute("cost", drink.getCost());
+                String image = "/images/" + drinkname.toLowerCase() + ".png";
+                model.addAttribute("drink_image",image);
+                System.out.println("model in pay " + model);
+
 
                 ErrorMessages msgs = new ErrorMessages();
 
@@ -192,7 +198,7 @@ public class PaymentController {
                 } 
                 if (states.get(command.getState()) == null)  {
                     hasErrors = true;
-                    msgs.add(  "Invalid State, Your input: " + command.getExpmonth());
+                    msgs.add(  "Invalid State, Your input: " + command.getState());
                 } 
         
                 if (hasErrors) {

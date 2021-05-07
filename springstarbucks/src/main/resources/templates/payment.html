@@ -28,16 +28,23 @@
                   <h4>Cart
                     <span class="price" style="color:black">
                       <i class="fa fa-shopping-cart"></i>
-                      <b>4</b>
+                      <b>1</b>
                     </span>
                   </h4>
                   <!-- <p><a href="#">Product 1</a> <span class="price">$15</span></p>
                   <p><a href="#">Product 2</a> <span class="price">$5</span></p>
                   <p><a href="#">Product 3</a> <span class="price">$8</span></p>
                   <p><a href="#">Product 4</a> <span class="price">$2</span></p> -->
-                  <p><span class="price" th:text="${cost}"></span></p>
+                  <p>
+                      <img th:src="${drink_image}" alt="${drinkname}" style="width:100px;height:100px">
+                      <a th:href = "@{/menupage/{id}(id=${drinkname})}">
+                        <span th:text="${drinkname}"></span>
+                      </a>
+                        
+                        <span class="price"><span th:text="${cost}"></span></span>
+                  </p>
                   <hr>
-                  <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+                  <p>Total <span class="price" style="color:black"><b><span th:text="${cost}"></span></b></span></p>
                 </div>
               </div>
             </div>

@@ -45,6 +45,8 @@ public class WebController {
 	//Goal: pass the drink value into the drink template
 	@GetMapping("/menupage/{drinkname}")
 	public String drinktemplate(@PathVariable("drinkname") String drinkname, Model model) {
+
+		
 		model.addAttribute("drinkname", drinkname);
 
 		Drink drink = new DrinkParser(drinkname).setDrink();
@@ -53,6 +55,7 @@ public class WebController {
 		model.addAttribute("message", message);
 		String image = "/images/" + drinkname.toLowerCase() + ".png";
 		model.addAttribute("drink_image",image);
+
 
 
 		return "drinktemplate";
