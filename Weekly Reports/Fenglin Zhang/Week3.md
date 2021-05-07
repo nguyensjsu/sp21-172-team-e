@@ -1,4 +1,4 @@
-# Week 2 Notes-----Fenglin Zhang
+# Week 3 Notes-----Fenglin Zhang
 
 ### self notes
 * Need to connect the modal fragments nested in login and sign modal
