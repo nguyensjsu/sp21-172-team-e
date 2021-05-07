@@ -1,0 +1,57 @@
+<div th:fragment="navbar">
+    <nav class="navbar fixed-top navbar-expand-lg scrolling-navbar font-control">
+        <a class="navbar-brand nav-margin-control logo-style" th:href="@{/}">
+          <img class="starbucks_logo" alt="logo" th:src="@{/images/starbucks_logo2.png}">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class=" hover-control link-control padding-control" id="homeLink" th:href="@{/}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class=" hover-control link-control padding-control" id="exploreLink" th:href="@{/menu}">Menu</a>
+            </li>
+          </ul>
+          <div>
+            <div sec:authorize="isAnonymous()">
+              <a class="btn btn-outline-white btn-outline login-button-margin-control js-anchor1"  
+              data-toggle="modal" data-backdrop="false" 
+              data-target="#modalForLogin" 
+              th:href="@{/login}">login</a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+              <p class="dynamicFirstName"> Welcome <span class="dynamicFirstName" th:text="${firstName}"></span></p>
+            </div>
+          </div>
+
+
+          <div>
+            <div sec:authorize="isAnonymous()">
+              <a class="btn btn-outline-white btn-outline signup-button-margin-control js-anchor2"  
+              data-toggle="modal" 
+              data-target="#exampleModalCenter1"  
+              data-backdrop="false" 
+              th:href="@{/registration}">Sign Up</a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+              <ul class="navbar-nav" id="nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                        <img alt="avatar" class="rounded-circle avatar" th:src="@{/images/default.png}">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-left dropdown-style" aria-labelledby="navbarDropdownMenuLink1">
+                        <a class="dropdown-item dropdown-padding-control" ><i class="far fa-user-circle i-padding-control"></i>Profile</a>
+                        <a class="dropdown-item dropdown-padding-control" th:href="@{/logout}"><i class="fas fa-sign-out-alt i-padding-control"></i>Logout</a>
+                    </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </nav>
+    <div th:replace="loginModal::loginModal"></div>
+    <div th:replace="registrationModal::registrationModal"></div>
+    <script type="text/javascript" th:src="@{/js/loginAndSignupModalTrigger.js}"></script>
+</div>
+
+
