@@ -2,6 +2,8 @@
 <!-- Backoffice Functions: -->
 <!-- See any customer's rewards, fix any issues (i.e. add missing credit) -->
 <!-- TODO: change field names, add additional lookup methods? -->>
+<!-- TODO: buttons to navigate between functions 
+    (see all customers, search particular customer, add points)-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,6 +17,9 @@
     <form name="form" th:object="${paymentsCommand}" method="post" th:action="@{/}">
         <label for="ccnum">Starbucks Rewards Card Number</label>
               <input type="text" id="ccnum" name="cardnumber" placeholder="555555555" th:field="*{creditCardNo}">
+              <div class="alert alert-warning" th:if="${#fields.hasErrors('creditCardNo')}" th:errors="*{creditCardNo}"></div> 
+              <label for="ccnum">Credit points to be added: </label>
+              <input type="text" id="ccnum" name="cardnumber" placeholder="100" th:field="*{creditCardNo}">
               <div class="alert alert-warning" th:if="${#fields.hasErrors('creditCardNo')}" th:errors="*{creditCardNo}"></div> 
         <!-- SUBMISSION BUTTON -->
         <input type="submit" name="action" id="process-payment" value="Process Payment" class="btn">
