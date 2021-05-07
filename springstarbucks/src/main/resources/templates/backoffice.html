@@ -14,15 +14,23 @@
   </head>
   <body>
         <!-- FORM SECTION -->
-    <form name="form" th:object="${paymentsCommand}" method="post" th:action="@{/}">
+    <form name="form" th:object="${starbucksCard}" method="post" th:action="@{/}">
         <label for="ccnum">Starbucks Rewards Card Number</label>
               <input type="text" id="ccnum" name="cardnumber" placeholder="555555555" th:field="*{creditCardNo}">
               <div class="alert alert-warning" th:if="${#fields.hasErrors('creditCardNo')}" th:errors="*{creditCardNo}"></div> 
               <label for="ccnum">Credit points to be added: </label>
-              <input type="text" id="ccnum" name="cardnumber" placeholder="100" th:field="*{creditCardNo}">
+              <input type="text" id="ccnum" name="cardnumber" placeholder="$10" th:field="*{creditCardNo}">
               <div class="alert alert-warning" th:if="${#fields.hasErrors('creditCardNo')}" th:errors="*{creditCardNo}"></div> 
         <!-- SUBMISSION BUTTON -->
         <input type="submit" name="action" id="process-payment" value="Process Payment" class="btn">
     </form>
+
+    <form name="form" th:object="${starbucksCard}" method="post" th:action="@{/}">
+      <label for="ccnum">Search by Card Number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="555555555" th:field="*{creditCardNo}">
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('creditCardNo')}" th:errors="*{creditCardNo}"></div> 
+      <!-- SUBMISSION BUTTON -->
+      <input type="submit" name="action" id="process-payment" value="Process Payment" class="btn">
+  </form>
   </body>
 </html>

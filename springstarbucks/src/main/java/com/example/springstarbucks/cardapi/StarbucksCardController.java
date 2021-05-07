@@ -83,7 +83,23 @@ class StarbucksCardController {
 		return card;
 	}
 
+	//Add points/dollars to card
+	@PostMapping("/card/{num}/{amount}")
+	StarbucksCard addPoints(@PathVariable String num, @PathVariable String amount, HttpServletResponse response) {
+		//first find card
+		StarbucksCard card = repository.findByCardNumber(num);
+		if(card == null)
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error. Card Not Found!");
 
+		if(card.getCardCode().equals(code)) { 
+			card.setBalance(card.getBalance() + amount); //add amount to balance
+			repository.save(card);
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error. Card Not Valid!");
+		}
+		
+		return card;
+	}
 
 
 
