@@ -92,6 +92,7 @@ class StarbucksCardController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error. Card Not Found!");
 
 		if(card.getCardCode().equals(code)) { 
+			//if (amount.matches("/^(\$(?=[1-9])((\d*\.\d{1,2})|\d+\.?)|((?=[1-9])(\d+\.?))$/")) //matches money format
 			card.setBalance(card.getBalance() + amount); //add amount to balance
 			repository.save(card);
 		} else {
