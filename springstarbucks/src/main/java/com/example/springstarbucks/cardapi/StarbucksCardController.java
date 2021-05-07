@@ -83,9 +83,60 @@ class StarbucksCardController {
 		return card;
 	}
 
+	//Add points/dollars to card
+	@PostMapping("/card/{num}/{amount}")
+	StarbucksCard addPoints(@PathVariable String num, @PathVariable String amount, HttpServletResponse response) {
+		//first find card
+		StarbucksCard card = repository.findByCardNumber(num);
+		if(card == null)
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error. Card Not Found!");
 
+		if(card.getCardCode().equals(code)) { 
+			//if (amount.matches("/^(\$(?=[1-9])((\d*\.\d{1,2})|\d+\.?)|((?=[1-9])(\d+\.?))$/")) //matches money format
+			card.setBalance(card.getBalance() + amount); //add amount to balance
+			repository.save(card);
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error. Card Not Valid!");
+		}
+		
+		return card;
+	}
 
+	//example API from midterm //
 
+	/*@PostMapping
+    public String postAction(@Valid @ModelAttribute("command") PaymentsCommand command,  
+                            @RequestParam(value="action", required=true) String action,
+                            Errors errors, Model model, HttpServletRequest request) {
+					
+								//PAYMENTSCOMMAND was the model 
+        log.info( "Action: " + action ) ;
+        log.info( "Command: " + command ) ;
+
+        PaymentsCommand payment = new PaymentsCommand(); 
+        //name 
+        payment.setFirstname(command.getFirstname());
+        payment.setLastname(command.getLastname());
+
+        //card details 
+        if (command.getCardnumber().matches("\\d{4}-\\d{4}-\\d{4}-\\d{4}")) {
+            payment.setCardnumber(command.getCardnumber());
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Card Number!");
+        }
+
+        repository.save(payment); 
+    
+        model.addAttribute( "message", "Hello There Again!" ) ;
+     
+        if (errors.hasErrors()) {
+            return "creditcards";
+        }
+
+        model.addAttribute( "message", "Thank You for Your Payment!" ) ;
+
+        return "creditcards";
+    } */
 
 
 

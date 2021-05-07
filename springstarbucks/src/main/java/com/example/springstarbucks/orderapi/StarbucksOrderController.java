@@ -54,6 +54,7 @@ public class StarbucksOrderController {
 		return repository.findAll();
 	}
 
+	//TODO: Check if this having the same path as above causes any issues 
 	@DeleteMapping("/orders")
 	Message deleteAll() {
 		repository.deleteAllInBatch();
@@ -183,6 +184,7 @@ public class StarbucksOrderController {
 		orders.put(regid,new_order);
 		return new_order;
 
+		//TODO: Does the above send the drink information to the database? i.e. 'drink', 'size'
 	}
 
 	//get Details of starbucks card
