@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<nav th:include="navbar.html::navbar"></nav>
+<div class="blockFiller"></div>
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:th="http://www.thymeleaf.org">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -9,8 +11,7 @@
         <link rel="stylesheet" th:href="@{/card.css}" />
         
     </head>
-    <h1 align="center"> Payment information </h1>
-    <div th:include="home.html::base">
+
     </div>
 
     <body> 
