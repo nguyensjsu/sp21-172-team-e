@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<!-- HEADERS IMPORT -->
+<nav th:include="navbar.html::navbar"></nav>
+<div class="blockFiller"></div>
+
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:th="http://www.thymeleaf.org">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -6,12 +9,7 @@
     <head>
         <title>Starbucks</title>
         <link rel="stylesheet" th:href="@{/styles.css}" />
-        
     </head>
-    <h1 align="center"> Menu </h1>
-    <div th:include="home.html::base">
-    </div>
-
     <body> 
         <h1> Welcome to Menu Page</h1>
         <div class="grid-container">
@@ -20,7 +18,6 @@
             <a href = "/menupage/Cappuccino"><div class="grid-item item3" >Cappuccino</div></a>
             <a href = "/menupage/Latte"><div class="grid-item item4" >Latte</div></a>
             <a href = "/menupage/Fresh%20Coffee" ><div class="grid-item item5" >Fresh Coffee</div></a>
-          </div>
+            </div>
     </body>
-
 </html>

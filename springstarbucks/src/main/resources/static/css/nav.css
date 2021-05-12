@@ -2,7 +2,7 @@
     background: transparent;
     box-shadow: 0 2px 11px 1px rgba(0,0,0,0.5);
     padding: 6px 20px;
-
+    position: relative;
 }
 
 .top-nav-collapse {
@@ -29,10 +29,10 @@
     padding-right: 2px;
     padding-left: 2px;
     margin-right: 20px;
-    color: #fff;
+    color: black;
 }
 .padding-control:hover{
-    color: #F9F9F9;
+    color: lightblue;
     text-decoration: none;
 }
 .page-on{
@@ -215,5 +215,9 @@
   width: 140px;
 }
 .dynamicFirstName{
-  color: #F9F9F9;
+  color: black;
+}
+
+.blockFiller {
+    height: 150px;
 }

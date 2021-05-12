@@ -28,11 +28,11 @@ import org.springframework.web.client.RestTemplate;
 @Controller
 public class WebController {
 
-	/*@GetMapping("/")
-	public String home(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-		model.addAttribute("name", name);
-		return "home";
-	}*/
+	// @GetMapping("/")
+	// public String home(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+	// 	model.addAttribute("name", name);
+	// 	return "home";
+	// }
 
 	@GetMapping("/menupage")
 	public String menu(String name, Model model) {

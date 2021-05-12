@@ -1,4 +1,7 @@
 <div th:fragment="navbar">
+<!-- CSS HEADERS -->
+    <html th:include="homePage.html::navglobal" ></html> 
+<!-- NAV BAR -->
     <nav class="navbar fixed-top navbar-expand-lg scrolling-navbar font-control">
         <a class="navbar-brand nav-margin-control logo-style" th:href="@{/}">
           <img class="starbucks_logo" alt="logo" th:src="@{/images/starbucks_logo2.png}">
@@ -9,7 +12,7 @@
               <a class=" hover-control link-control padding-control" id="homeLink" th:href="@{/}">Home</a>
             </li>
             <li class="nav-item">
-              <a class=" hover-control link-control padding-control" id="exploreLink" th:href="@{/menu}">Menu</a>
+              <a class=" hover-control link-control padding-control" id="exploreLink" th:href="@{/menupage}">Menu</a>
             </li>
           </ul>
           <div>
