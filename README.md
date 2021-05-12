@@ -1,4 +1,4 @@
-# Team Project Reop
+# Team Project Repo
 
 https://github.com/nguyensjsu/sp21-172-team-e
 
