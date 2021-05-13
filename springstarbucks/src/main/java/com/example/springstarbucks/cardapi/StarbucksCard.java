@@ -25,5 +25,6 @@ public class StarbucksCard {
     @Column(nullable = false) private double balance;
     @Column(nullable = false) private boolean activated;
                               private String status;
+                              private String userID; //user that the card belongs to 
 
 }
