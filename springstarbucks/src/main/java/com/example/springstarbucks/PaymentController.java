@@ -10,7 +10,6 @@ import javax.validation.Valid;
 
 import com.example.springstarbucks.drinks.Drink;
 import com.example.springstarbucks.drinks.DrinkParser;
-import com.example.springstarbucks.orderapi.PaymentsCommand;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -119,99 +118,99 @@ public class PaymentController {
         }
     }
 
-    @GetMapping("/pay/{drinkname}")
-    public String getAction( @PathVariable("drinkname") String drinkname,
-                             @ModelAttribute("command") PaymentsCommand command, Model model ) {
+    // @GetMapping("/pay/{drinkname}")
+    // public String getAction( @PathVariable("drinkname") String drinkname,
+    //                          @ModelAttribute("command") PaymentsCommand command, Model model ) {
 
-        Drink drink = new DrinkParser(drinkname).setDrink();
-		String message = drink.getMessage() + " costs " + drink.getCost();
-		model.addAttribute("cost", drink.getCost());
-		String image = "/images/" + drinkname.toLowerCase() + ".png";
-		model.addAttribute("drink_image",image);
-        System.out.println("model in pay " + model);
+    //     Drink drink = new DrinkParser(drinkname).setDrink();
+	// 	String message = drink.getMessage() + " costs " + drink.getCost();
+	// 	model.addAttribute("cost", drink.getCost());
+	// 	String image = "/images/" + drinkname.toLowerCase() + ".png";
+	// 	model.addAttribute("drink_image",image);
+    //     System.out.println("model in pay " + model);
 
                         
-        return "payment" ;
+    //     return "payment" ;
 
-    } 
+    // } 
 
-    @PostMapping("/pay/{drinkname}")
-    public String postAction(@PathVariable("drinkname") String drinkname,
-                             @Valid @ModelAttribute("command") PaymentsCommand command,
-                             @RequestParam(value = "action", required = true) String action, Errors errors, Model model,
-                             HttpServletRequest request) {
+    // @PostMapping("/pay/{drinkname}")
+    // public String postAction(@PathVariable("drinkname") String drinkname,
+    //                          @Valid @ModelAttribute("command") PaymentsCommand command,
+    //                          @RequestParam(value = "action", required = true) String action, Errors errors, Model model,
+    //                          HttpServletRequest request) {
                 
-                Drink drink = new DrinkParser(drinkname).setDrink();
-                String message = drink.getMessage() + " costs " + drink.getCost();
-                model.addAttribute("cost", drink.getCost());
-                String image = "/images/" + drinkname.toLowerCase() + ".png";
-                model.addAttribute("drink_image",image);
-                System.out.println("model in pay " + model);
+    //             Drink drink = new DrinkParser(drinkname).setDrink();
+    //             String message = drink.getMessage() + " costs " + drink.getCost();
+    //             model.addAttribute("cost", drink.getCost());
+    //             String image = "/images/" + drinkname.toLowerCase() + ".png";
+    //             model.addAttribute("drink_image",image);
+    //             System.out.println("model in pay " + model);
 
 
-                ErrorMessages msgs = new ErrorMessages();
+    //             ErrorMessages msgs = new ErrorMessages();
 
-                boolean hasErrors = false;
-                if ( command.getFirstname().equals("") ) { hasErrors = true; msgs.add("First Name Required."); }
-                if ( command.getLastname().equals("") ) { hasErrors = true; msgs.add("Last Name Required."); }
-                if ( command.getAddress().equals("") ) { hasErrors = true; msgs.add("Address Required."); }
-                if ( command.getCity().equals("") ) { hasErrors = true; msgs.add("City Required."); }
-                if ( command.getState().equals("") ) { hasErrors = true; msgs.add("State Required."); }
-                if ( command.getZip().equals("") ) { hasErrors = true; msgs.add("Zip Required."); }
-                if ( command.getPhone().equals("") ) { hasErrors = true; msgs.add("Phone Required."); }
-                if ( command.getCardnum().equals("") ) { hasErrors = true; msgs.add("Credit Card Number Required."); }
-                if ( command.getExpmonth().equals("") ) { hasErrors = true; msgs.add("Credit Card Month Required."); }
-                if ( command.getExpyear().equals("") ) { hasErrors = true; msgs.add("Credit Card Year Required."); }
-                if ( command.getCvv().equals("") ) { hasErrors = true; msgs.add("Credit Card CVV Required."); }
-                if ( command.getEmail().equals("") ) { hasErrors = true; msgs.add("Email Address Required."); }
+    //             boolean hasErrors = false;
+    //             if ( command.getFirstname().equals("") ) { hasErrors = true; msgs.add("First Name Required."); }
+    //             if ( command.getLastname().equals("") ) { hasErrors = true; msgs.add("Last Name Required."); }
+    //             if ( command.getAddress().equals("") ) { hasErrors = true; msgs.add("Address Required."); }
+    //             if ( command.getCity().equals("") ) { hasErrors = true; msgs.add("City Required."); }
+    //             if ( command.getState().equals("") ) { hasErrors = true; msgs.add("State Required."); }
+    //             if ( command.getZip().equals("") ) { hasErrors = true; msgs.add("Zip Required."); }
+    //             if ( command.getPhone().equals("") ) { hasErrors = true; msgs.add("Phone Required."); }
+    //             if ( command.getCardnum().equals("") ) { hasErrors = true; msgs.add("Credit Card Number Required."); }
+    //             if ( command.getExpmonth().equals("") ) { hasErrors = true; msgs.add("Credit Card Month Required."); }
+    //             if ( command.getExpyear().equals("") ) { hasErrors = true; msgs.add("Credit Card Year Required."); }
+    //             if ( command.getCvv().equals("") ) { hasErrors = true; msgs.add("Credit Card CVV Required."); }
+    //             if ( command.getEmail().equals("") ) { hasErrors = true; msgs.add("Email Address Required."); }
         
-                if(!command.getZip().matches("\\d{5}")) {
-                    //System.out.println("Error: Zip code incorrect, should have 5 digits");
-                    msgs.add("Invalid zip, Your input: " + command.getZip());
-                    hasErrors = true;
+    //             if(!command.getZip().matches("\\d{5}")) {
+    //                 //System.out.println("Error: Zip code incorrect, should have 5 digits");
+    //                 msgs.add("Invalid zip, Your input: " + command.getZip());
+    //                 hasErrors = true;
                     
-                }
-                if(!command.getPhone().matches("[(]\\d{3}[)] \\d{3}-\\d{4}")) {
-                    //System.out.println("Error: phone number incorrect format, should be in the format (###) ###-####");
-                    msgs.add("Invalid phone, Your input: " + command.getPhone());
-                    hasErrors = true;
-                }
-                if(!command.getCardnum().matches("\\d{4}-\\d{4}-\\d{4}-\\d{4}")) {
-                    //System.out.println("Error: card number incorrect format, should be in the format ####-####-####");
-                    msgs.add("Invalid card number format, Your input: " + command.getCardnum());
-                    hasErrors = true;
-                }
-                if(!command.getExpyear().matches("\\d{4}")) {
-                    //System.out.println("Error: Expiration year incorrect, should have 4 digits");
-                    msgs.add("Invalid card exp year, Your input: " + command.getExpyear());
-                    hasErrors = true;
-                }
-                if(!command.getCvv().matches("\\d{3}")) {
-                    //System.out.println("Error: cvv incorrect, should have 3 digits");
-                    msgs.add("Invalid card cvv, Your input: " + command.getCvv());
-                    hasErrors = true;
-                }
+    //             }
+    //             if(!command.getPhone().matches("[(]\\d{3}[)] \\d{3}-\\d{4}")) {
+    //                 //System.out.println("Error: phone number incorrect format, should be in the format (###) ###-####");
+    //                 msgs.add("Invalid phone, Your input: " + command.getPhone());
+    //                 hasErrors = true;
+    //             }
+    //             if(!command.getCardnum().matches("\\d{4}-\\d{4}-\\d{4}-\\d{4}")) {
+    //                 //System.out.println("Error: card number incorrect format, should be in the format ####-####-####");
+    //                 msgs.add("Invalid card number format, Your input: " + command.getCardnum());
+    //                 hasErrors = true;
+    //             }
+    //             if(!command.getExpyear().matches("\\d{4}")) {
+    //                 //System.out.println("Error: Expiration year incorrect, should have 4 digits");
+    //                 msgs.add("Invalid card exp year, Your input: " + command.getExpyear());
+    //                 hasErrors = true;
+    //             }
+    //             if(!command.getCvv().matches("\\d{3}")) {
+    //                 //System.out.println("Error: cvv incorrect, should have 3 digits");
+    //                 msgs.add("Invalid card cvv, Your input: " + command.getCvv());
+    //                 hasErrors = true;
+    //             }
         
-                if (months.get(command.getExpmonth()) == null)  {
-                    hasErrors = true;
-                    msgs.add(  "Invalid Card Expiration Month, Your input: " + command.getExpmonth());
-                } 
-                if (states.get(command.getState()) == null)  {
-                    hasErrors = true;
-                    msgs.add(  "Invalid State, Your input: " + command.getState());
-                } 
+    //             if (months.get(command.getExpmonth()) == null)  {
+    //                 hasErrors = true;
+    //                 msgs.add(  "Invalid Card Expiration Month, Your input: " + command.getExpmonth());
+    //             } 
+    //             if (states.get(command.getState()) == null)  {
+    //                 hasErrors = true;
+    //                 msgs.add(  "Invalid State, Your input: " + command.getState());
+    //             } 
         
-                if (hasErrors) {
-                    msgs.print();
-                    model.addAttribute("messages", msgs.getMessages());
-                    return "payment";
-                }
+    //             if (hasErrors) {
+    //                 msgs.print();
+    //                 model.addAttribute("messages", msgs.getMessages());
+    //                 return "payment";
+    //             }
                 
         
-        model.addAttribute("message", "Thank You for Your Payment!");
+    //     model.addAttribute("message", "Thank You for Your Payment!");
 
-        return "payment";
+    //     return "payment";
 
-    }
+    // }
 
 }
