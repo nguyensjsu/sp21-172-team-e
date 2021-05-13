@@ -117,11 +117,11 @@
 
 .btn-outline-white, .btn-outline-white:visited {
   background: none;
-  color: #fff;
+  color: black;
   border-color: #fff; }
 
 .btn-outline-white:hover, .btn-outline-white:focus, .btn-outline-white:active {
-  color: #46484a;
+  color: lightblue;
   background: #fff; }
 
 .link-white, link-white:visited {
