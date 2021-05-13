@@ -1,4 +1,4 @@
-package com.example.springstarbucks.cardapi;
+package com.example.backoffice.cardapi;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,5 +1,4 @@
-
-package com.example.springstarbucks.cardapi;
+package com.example.backoffice.cardapi;
 
 import java.util.Objects;
 import javax.persistence.Entity;
