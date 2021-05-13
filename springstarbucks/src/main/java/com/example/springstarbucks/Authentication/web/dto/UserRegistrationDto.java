@@ -5,7 +5,7 @@ public class UserRegistrationDto {
     private String lastName;
     private String email;
     private String password;
-    
+    private int rewardPoints; 
 
     public UserRegistrationDto(String firstName, String lastName, String email, String password) {
         super();
@@ -13,6 +13,7 @@ public class UserRegistrationDto {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.rewardPoints = 0; //initialize with 0 reward points 
     }
 
     public UserRegistrationDto() {
@@ -50,4 +51,11 @@ public class UserRegistrationDto {
         this.password = password;
     }
 
+    public void setRewards(int rewards){
+        this.rewardPoints = rewards;
+    }
+
+    public int getRewards(){
+        return this.rewardPoints;
+    }
 }

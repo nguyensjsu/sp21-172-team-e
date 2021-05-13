@@ -30,6 +30,7 @@ public class User {
 
     private String email;
     private String password;
+    private int rewardPoints; 
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -54,6 +55,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.roles = roles;
+        this.rewardPoints = 0; //initialize with zero points
     }
 
 
@@ -103,6 +105,14 @@ public class User {
 
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
+    }
+
+    public int getRewards(){
+        return this.rewardPoints;
+    }
+    
+    public void setRewards(int rewards){
+        this.rewardPoints = rewards;
     }
     
 }
