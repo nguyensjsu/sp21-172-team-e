@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
 
+import org.springframework.security.core.Authentication; //for getting logged in user info
+import org.springframework.security.core.context.SecurityContextHolder;
+
 @RestController
 class StarbucksCardController {
 
@@ -28,6 +31,8 @@ class StarbucksCardController {
 
 	@PostMapping("/cards")
 	StarbucksCard newCard() {
+		Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+		
 		StarbucksCard newcard = new StarbucksCard();
 		Random random = new Random();
 		int num = random.nextInt(900000000) + 100000000;

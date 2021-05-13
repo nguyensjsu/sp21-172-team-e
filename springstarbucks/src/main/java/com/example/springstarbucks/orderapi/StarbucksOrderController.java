@@ -23,6 +23,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.lang.Nullable;
 
+import org.springframework.security.core.Authentication; //for getting logged in user info
+import org.springframework.security.core.context.SecurityContextHolder;
+
 @RestController
 public class StarbucksOrderController {
 
@@ -215,6 +218,7 @@ public class StarbucksOrderController {
 
 	@PostMapping("/order/register/{regid}/pay/{cardnum}")
 	StarbucksCard processOrder(@PathVariable String regid, @PathVariable String cardnum) {
+		Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
 		System.out.println("Pay for Order: Reg ID = " + regid + " Using Card = " + cardnum) ;
 		StarbucksOrder active = orders.get(regid);
 		if (active == null) {
