@@ -1,4 +1,4 @@
-package com.example.springstarbucks.Authentication.model;
+package com.example.backoffice.userapi;
 
 import java.util.Collection;
 
@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -20,23 +19,18 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username")
-    private String username;
+    @Column(name = "first_name")
+    private String firstName;
+    
+    @Column(name = "last_name")
+    private String lastName;
 
     private String email;
     private String password;
     private int rewardPoints; 
-
-    @Lob 
-    private String token;
-
-    private String authName;
-
-    private String userId;
-
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -53,28 +47,40 @@ public class User {
     public User(){
 
     }
-    public User(String userId, String authName, String token){
-        this.token = token;
-        this.authName = authName;
-        this.userId = userId;
-    }
 
-    public User( String username, String email, String password, Collection<Role> roles) {
-        this.username = username;
+    public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+       
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
- 
         this.roles = roles;
         this.rewardPoints = 0; //initialize with zero points
     }
 
 
-    public String getUsername() {
-        return this.username;
+    public Long getId() {
+        return this.id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -91,30 +97,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getToken() {
-        return this.token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getAuthName() {
-        return this.authName;
-    }
-
-    public void setAuthName(String authName) {
-        this.authName = authName;
-    }
-
-    public String getUserId() {
-        return this.userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public Collection<Role> getRoles() {

@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
 
+import org.springframework.security.core.Authentication; //for getting logged in user info
+import org.springframework.security.core.context.SecurityContextHolder;
+
 @RestController
 class StarbucksCardController {
 
@@ -28,6 +31,8 @@ class StarbucksCardController {
 
 	@PostMapping("/cards")
 	StarbucksCard newCard() {
+		Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+		
 		StarbucksCard newcard = new StarbucksCard();
 		Random random = new Random();
 		int num = random.nextInt(900000000) + 100000000;
@@ -35,8 +40,11 @@ class StarbucksCardController {
 
 		newcard.setCardNumber(String.valueOf(num));
 		newcard.setCardCode(String.valueOf(code));
+		//TODO: Let user select the balance to load onto the card
 		newcard.setBalance(20.00);
 		newcard.setStatus("New Card");
+		//TODO: Add 'setCardEmail' once we know how to set logged in user email
+		//String user = loggedInUser.getName(); //this will get the email, NOT the first name
 		return repository.save(newcard);
 	}
 
@@ -83,61 +91,21 @@ class StarbucksCardController {
 		return card;
 	}
 
-	//Add points/dollars to card
-	//===================== bug ==================================
-	// @PostMapping("/card/{num}/{amount}")
-	// StarbucksCard addPoints(@PathVariable String num, @PathVariable String amount, HttpServletResponse response) {
-	// 	//first find card
-	// 	StarbucksCard card = repository.findByCardNumber(num);
-	// 	if(card == null)
-	// 		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error. Card Not Found!");
+	//Add dollars to Starbucks card
+	
+	@PostMapping("/card/{num}/{amount}")
+	StarbucksCard addPoints(@PathVariable String num, @PathVariable String amount, HttpServletResponse response) {
+		//first find card
+		StarbucksCard card = repository.findByCardNumber(num);
+		if(card == null)
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error. Card Not Found!");
 
-	// 	if(card.getCardCode().equals(code)) { 
-	// 		//if (amount.matches("/^(\$(?=[1-9])((\d*\.\d{1,2})|\d+\.?)|((?=[1-9])(\d+\.?))$/")) //matches money format
-	// 		card.setBalance(card.getBalance() + amount); //add amount to balance
-	// 		repository.save(card);
-	// 	} else {
-	// 		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error. Card Not Valid!");
-	// 	}
+		//Note: card does not have to be activated to load more onto it
+		card.setBalance(Double.parseDouble(amount) + card.getBalance()); //add amount to balance, parses amount to add 
+		repository.save(card);
 		
-	// 	return card;
-	// }
-
-	//example API from midterm //
-
-	/*@PostMapping
-    public String postAction(@Valid @ModelAttribute("command") PaymentsCommand command,  
-                            @RequestParam(value="action", required=true) String action,
-                            Errors errors, Model model, HttpServletRequest request) {
-					
-								//PAYMENTSCOMMAND was the model 
-        log.info( "Action: " + action ) ;
-        log.info( "Command: " + command ) ;
-
-        PaymentsCommand payment = new PaymentsCommand(); 
-        //name 
-        payment.setFirstname(command.getFirstname());
-        payment.setLastname(command.getLastname());
-
-        //card details 
-        if (command.getCardnumber().matches("\\d{4}-\\d{4}-\\d{4}-\\d{4}")) {
-            payment.setCardnumber(command.getCardnumber());
-        } else {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Card Number!");
-        }
-
-        repository.save(payment); 
-    
-        model.addAttribute( "message", "Hello There Again!" ) ;
-     
-        if (errors.hasErrors()) {
-            return "creditcards";
-        }
-
-        model.addAttribute( "message", "Thank You for Your Payment!" ) ;
-
-        return "creditcards";
-    } */
+		return card;
+	}
 
 
 

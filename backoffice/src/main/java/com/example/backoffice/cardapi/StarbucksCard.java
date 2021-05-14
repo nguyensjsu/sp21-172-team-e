@@ -1,5 +1,4 @@
-
-package com.example.springstarbucks.cardapi;
+package com.example.backoffice.cardapi;
 
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -25,6 +24,6 @@ public class StarbucksCard {
     @Column(nullable = false) private double balance;
     @Column(nullable = false) private boolean activated;
                               private String status;
-                              private String userEmail; //user that the card belongs to 
+                              private String userID; //user that the card belongs to 
 
 }
