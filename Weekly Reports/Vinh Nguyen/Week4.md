@@ -10,8 +10,8 @@
     * Added cybersource API
 * https://github.com/nguyensjsu/sp21-172-team-e/commit/8c6a8b77f11c2e5daab14c26104ca6e7bd5c42b4
     * Connected Authenticated Users to all other pages besides home page
-* 
-    * 
+* https://github.com/nguyensjsu/sp21-172-team-e/commit/8c6a8b77f11c2e5daab14c26104ca6e7bd5c42b4
+    * Users have to be authenticated to do post actions
 
 
 ## Challenges
