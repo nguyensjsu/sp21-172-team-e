@@ -1,8 +1,8 @@
-# Week 2 Notes-----Fenglin Zhang
+# Week 3 Notes-----Fenglin Zhang
 
 ### self notes
-* Connect the modal fragments nested in login and sign modal
-* Integrate with Okta SSO
+* Need to connect the modal fragments nested in login and sign modal
+* Have to integrate with Okta SSO
 
 # Snapshot
 * ![pic3](images/task_card3.png)
@@ -18,4 +18,4 @@
 
 * Bootstrap modal is hard... need to read documentation many times
 * OOP design patterns is also hard, Gotta watch a couple of tutorials for that
-* It is easy to access the authorized username, but I need to display like "WELCOME <HIS USERNAME><Instead of His email>", so I find a way to make the username as a Global Model attribute on Stack Overflow
+* It is easy to access the authorized username, but I need to display like "WELCOME HIS USERNAME" Instead of His email, so I find a way to make the username as a Global Model attribute on Stack Overflow

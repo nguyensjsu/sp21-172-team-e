@@ -1,4 +1,7 @@
 <div th:fragment="navbar">
+<!-- CSS HEADERS -->
+    <html th:include="homePage.html::navglobal" ></html> 
+<!-- NAV BAR -->
     <nav class="navbar fixed-top navbar-expand-lg scrolling-navbar font-control">
         <a class="navbar-brand nav-margin-control logo-style" th:href="@{/}">
           <img class="starbucks_logo" alt="logo" th:src="@{/images/starbucks_logo2.png}">
@@ -17,7 +20,7 @@
               <a class="btn btn-outline-white btn-outline login-button-margin-control js-anchor1"  
               data-toggle="modal" data-backdrop="false" 
               data-target="#modalForLogin" 
-              th:href="@{/login}">login</a>
+              th:href="@{/login}">Login</a>
             </div>
             <div sec:authorize="isAuthenticated()">
               <p class="dynamicFirstName"> Welcome <span class="dynamicFirstName" th:text="${username}"></span></p>

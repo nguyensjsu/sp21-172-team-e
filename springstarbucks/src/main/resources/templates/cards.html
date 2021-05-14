@@ -14,6 +14,26 @@
 
     <body> 
         <h1> Welcome to Cards Page</h1>
+
+        <!-- <form method="POST" th:action="@{/cards}">
+            <button type="submit">Create a New Card</button>
+        </form>  -->
+        <!-- <form method="POST" action = "/cardspage"></form> -->
+        <!-- <form name="form" th:object="${command}" method="post" action=""></form> -->
+        <form action="/cardspage" method="post">
+            <button type="submit" name="new card" >Add New Card</a></button>
+        </form>  
+        <p> Here are your current cards:</p>
+        <!-- <div th:if="${not#lists.isEmpty(cardsList)}">
+            <div class="messages">
+                <ul th:each="c : ${card}">
+                    <li th:text="${c}" />
+                </ul>
+            </div>
+        </div>
+        <span th:if="${lists.isEmpty(cardsList)}" th:text=${cardsList}></span> -->
+
+        <span th:text=${cardsList}></span>
     </body>
 
 </html>

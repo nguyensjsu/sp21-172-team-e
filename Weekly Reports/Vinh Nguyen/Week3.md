@@ -1,4 +1,4 @@
-# Week 2 Notes for Vinh Nguyen
+# Week 3 Notes for Vinh Nguyen
 
 # Snapshot
 * ![pic3](images/week3snap.png)
@@ -13,6 +13,7 @@
 * https://github.com/nguyensjsu/sp21-172-team-e/commit/b7f6fd748b92c8aa08ae208fce9a1de036ac83db
     * Added form validation for order processing.
 
+
 ## Challenges
 
 * A challenge that I am having is trying to keep the states of orders for add to cart. Currently our implementation has a bare minimum of add 1 drink and the order process. Will have to figure out how we can add multiple drinks to the card before we process the order.
@@ -21,5 +22,8 @@
     * `Caused by: java.lang.IllegalStateException: Neither BindingResult nor plain target object for bean name 'command' available as request attribute`
         * Attempt 1: I'm probably missing the commands.java file for the inputs
             * **turns out I just needed to add a GetMapping and a PostMapping**
+* Issue mapping a post button with the controller. Not sure if it is a html problem of a controller problem
+    * **I just needed to have lower case "post" instead of "POST" in the form method**
+* For next week, I need to figure out how to connect cybersource API with our generated credit card in the correct format
 
     

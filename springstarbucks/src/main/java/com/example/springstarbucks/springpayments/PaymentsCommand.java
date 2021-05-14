@@ -1,4 +1,4 @@
-package com.example.springstarbucks.orderapi;
+package com.example.springstarbucks.springpayments;
 
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @Table(name = "Payments")
 @Data
 @RequiredArgsConstructor
-public class PaymentsCommand {
+class PaymentsCommand {
 
     private @Id @GeneratedValue Long id;
 

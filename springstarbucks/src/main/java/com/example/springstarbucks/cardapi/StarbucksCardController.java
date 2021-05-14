@@ -84,23 +84,24 @@ class StarbucksCardController {
 	}
 
 	//Add points/dollars to card
-	@PostMapping("/card/{num}/{amount}")
-	StarbucksCard addPoints(@PathVariable String num, @PathVariable String amount, HttpServletResponse response) {
-		//first find card
-		StarbucksCard card = repository.findByCardNumber(num);
-		if(card == null)
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error. Card Not Found!");
+	//===================== bug ==================================
+	// @PostMapping("/card/{num}/{amount}")
+	// StarbucksCard addPoints(@PathVariable String num, @PathVariable String amount, HttpServletResponse response) {
+	// 	//first find card
+	// 	StarbucksCard card = repository.findByCardNumber(num);
+	// 	if(card == null)
+	// 		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error. Card Not Found!");
 
-		if(card.getCardCode().equals(code)) { 
-			//if (amount.matches("/^(\$(?=[1-9])((\d*\.\d{1,2})|\d+\.?)|((?=[1-9])(\d+\.?))$/")) //matches money format
-			card.setBalance(card.getBalance() + amount); //add amount to balance
-			repository.save(card);
-		} else {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error. Card Not Valid!");
-		}
+	// 	if(card.getCardCode().equals(code)) { 
+	// 		//if (amount.matches("/^(\$(?=[1-9])((\d*\.\d{1,2})|\d+\.?)|((?=[1-9])(\d+\.?))$/")) //matches money format
+	// 		card.setBalance(card.getBalance() + amount); //add amount to balance
+	// 		repository.save(card);
+	// 	} else {
+	// 		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error. Card Not Valid!");
+	// 	}
 		
-		return card;
-	}
+	// 	return card;
+	// }
 
 	//example API from midterm //
 

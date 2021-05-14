@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<nav th:include="navbar.html::navbar"></nav>
+<div class="blockFiller"></div>
+
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:th="http://www.thymeleaf.org">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -6,14 +9,12 @@
     <head>
         <title>Starbucks</title>
         <link rel="stylesheet" th:href="@{/styles.css}" />
-        
     </head>
-    <h1 align="center"> Drink </h1>
-    <div th:include="home.html::base">
-    </div>
+
 
     <body> 
         <h1> Learn more about this drink: <span name= drinkname th:text="${drinkname}"></span></h1>
+        <button type="submit"><a th:href = "@{/menupage}">Go Back to Menu</a></button>
         <p th:text="${message}"></p>
         <img th:src="${drink_image}" alt="${drinkname}" style="width:100px;height:100px">
         <button type="submit"><a th:href = "@{/pay/{id}(id=${drinkname})}">Add to Cart</a></button>

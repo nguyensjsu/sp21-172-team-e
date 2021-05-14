@@ -2,7 +2,7 @@
     background: transparent;
     box-shadow: 0 2px 11px 1px rgba(0,0,0,0.5);
     padding: 6px 20px;
-
+    position: relative;
 }
 
 .top-nav-collapse {
@@ -29,10 +29,10 @@
     padding-right: 2px;
     padding-left: 2px;
     margin-right: 20px;
-    color: #fff;
+    color: black;
 }
 .padding-control:hover{
-    color: #F9F9F9;
+    color: lightblue;
     text-decoration: none;
 }
 .page-on{
@@ -117,11 +117,11 @@
 
 .btn-outline-white, .btn-outline-white:visited {
   background: none;
-  color: #fff;
+  color: black;
   border-color: #fff; }
 
 .btn-outline-white:hover, .btn-outline-white:focus, .btn-outline-white:active {
-  color: #46484a;
+  color: lightblue;
   background: #fff; }
 
 .link-white, link-white:visited {
@@ -215,5 +215,9 @@
   width: 140px;
 }
 .dynamicFirstName{
-  color: #F9F9F9;
+  color: black;
+}
+
+.blockFiller {
+    height: 150px;
 }
