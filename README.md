@@ -9,7 +9,7 @@ Team E
 
 ## Architecture Diagram
 
-![System_Architecture](images/System Architecture.png)
+![System_Architecture](images/System_Architecture.png)
 
 
 Users connect to app using a browser. The browser connects to the Bootstrap frontend app which is running on GCP through a load balancer. The frontend app run on a GKE Kubernetes cluster that can be auto scaled.
