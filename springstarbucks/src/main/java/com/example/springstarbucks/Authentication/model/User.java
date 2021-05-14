@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -19,17 +20,22 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "first_name")
-    private String firstName;
-    
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "username")
+    private String username;
 
     private String email;
     private String password;
+
+    @Lob 
+    private String token;
+
+    private String authName;
+
+    private String userId;
+
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -46,39 +52,27 @@ public class User {
     public User(){
 
     }
+    public User(String userId, String authName, String token){
+        this.token = token;
+        this.authName = authName;
+        this.userId = userId;
+    }
 
-    public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
-       
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User( String username, String email, String password, Collection<Role> roles) {
+        this.username = username;
         this.email = email;
         this.password = password;
+ 
         this.roles = roles;
     }
 
 
-    public Long getId() {
-        return this.id;
+    public String getUsername() {
+        return this.username;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return this.firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return this.lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -95,6 +89,30 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getToken() {
+        return this.token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getAuthName() {
+        return this.authName;
+    }
+
+    public void setAuthName(String authName) {
+        this.authName = authName;
+    }
+
+    public String getUserId() {
+        return this.userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public Collection<Role> getRoles() {
