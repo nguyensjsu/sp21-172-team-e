@@ -30,6 +30,8 @@ public class UserServiceImpl implements UserService{
         this.userRepository = userRepository;
     }
 
+    /*
+
     @Override
     public User save(UserRegistrationDto registrationDto) {
         User user = new User(
@@ -53,5 +55,6 @@ public class UserServiceImpl implements UserService{
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
+    */
     
 }

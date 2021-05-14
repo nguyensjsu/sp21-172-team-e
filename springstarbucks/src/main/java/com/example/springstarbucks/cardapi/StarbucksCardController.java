@@ -43,7 +43,8 @@ class StarbucksCardController {
 		//TODO: Let user select the balance to load onto the card
 		newcard.setBalance(20.00);
 		newcard.setStatus("New Card");
-		//TODO: Add 'setUserID' once we know how to set logged in userID
+		//TODO: Add 'setCardEmail' once we know how to set logged in user email
+		//String user = loggedInUser.getName(); //this will get the email, NOT the first name
 		return repository.save(newcard);
 	}
 
