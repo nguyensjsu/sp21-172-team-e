@@ -1,63 +1,32 @@
-[Link to Pull Request](https://github.com/nguyensjsu/sp21-172-team-e/pull/4)
+[Link to Pull Request](https://github.com/nguyensjsu/sp21-172-team-e/pull/13)
 
-## Week 1 Report ##
+## Week 4 Report ##
 
-This week, Rui and I both worked on the API. We mutually decided that he would work on the Starbucks Cards, and I would work on the orders. 
+Along with my task cards, I also added the base apps for backoffice and cashier's app, based on a clarification on how these parts of the project should be structured. I copied some of the code from our spring starbucks app into the backoffice as I believed that code would be useful. Because I changed the location of the files though, there may be package statement issues to resolve. 
 
+## My Task Cards ##
 
-### My Task Cards ###
+![My task cards this week](images/Week4_cards.png)
 
-![My task cards this week](images/Week1_cards.png)
+1. Implement rewards points as part of user table 
+2. Create 'add rewards points' API for use in backoffice
+3. Associate starbucks card with user using user id 
+4. Create separate app for back office 
 
-My tasks were to: 
-1. Create a list of expected transactions 
-2. Create a price list for menu items 
-3. Write API for expected transactions. 
+## Implement Rewards Points ##
 
-### Task 1: Create a list of expected transactions ###
+I added the rewards points designation to the user model, assigned setters and getters, etc. When a new user is made they are initialized with 0 reward points. 
 
-From the project page, there was a list of expected APIs we would need to use. We could edit these as needed, but this provided a good base for what we would be making. 
+## Create 'Add Rewards Points' API 
 
-**POST    /order/register/{regid}**
-Create a new order. Set order as "active" for register.
+After evaluating how reward points would be added, I first added some lines to the order API to make sure that purchases resulted in reward points being added. 
 
-**GET     /order/register/{regid}**
- Request the current state of the "active" Order.
+Then, I added the 'add reward points' API to the backoffice. We would only be using that specific API (inputting a user and an amount of reward points to add) in the backoffice itself, as a way for employees to add missing points. The API still needs testing and error handling. 
 
-**DELETE  /order/register/{regid}**
-Clear the "active" Order.
+## Associate Starbucks Card with User ##
 
-**POST    /order/register/{regid}/pay/{cardnum}**
-Process payment for the "active" Order. 
+I used email instead of ID, as I felt like it would be more useful to look up the cards by the user's email than the user's ID. The line setting this is still commented out in StarbucksCardController. 
 
-**GET     /orders**
-Get a list of all active orders (for all registers)
+## Create Separate App for Back Office ## 
 
-**DELETE     /orders**
-Delete all Orders (Use for Unit Testing Teardown)
-
-Once we have gotten further into the project, I may revise this list of transactions if we find another kind of transaction we need. 
-
-### Create a price list of expected transactions ###
-
-I found this [list of Starbucks items and prices](https://www.fastfoodprice.com/menu/starbucks-prices/). I will reference it while I make the orders and prices. 
-
-The drinks we'll offer are listed below, with the prices listed as (tall, grande, venti/customer's cup). 
-
-**Current items (referenced from webpage offerings so far)**
-Frappuccino (4.75, 5.25, 5.75)
-Cappuccino (3.25, 3.95, 4.25)
-Latte (3.25, 3.95, 4.25)
-Fresh Coffee (1.95, 2.45, 2.75) 
-
-
-**Proposed future items**
-Iced Coffee (2.25, 2.75, 3.25) 
-Cold Brew (2.95, 3.65, 3.95)
-Espresso (1.95, 2.25, 2.65) **note, this is for single, double, or triple shot**
-
-### Write API for expected transaction ### 
-
-The majority of this code was based on my code from lab 6. However, I saw that Rui organized his code differently than mine (using an interface, etc), so I started making some changes to the format of mine to match. 
-
-Testing is still in progress for the order APIs. 
+I created base apps for both back office and cashier's app, but put more work into Back Office so far. I added the application properties and transferred over some aspects from the spring starbucks app that I thought might be useful, such as the card model, controller, and repo and some of the files handling user. As the user was previously used solely for login, I am assuming there will need to be a lot of re-naming and restructuring the files such that the backoffice treats this 'user' (customer) as an entity to be edited, rather than as something for the SSO login. The files do not build yet. 

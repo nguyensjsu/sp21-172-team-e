@@ -23,6 +23,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.lang.Nullable;
 
+import org.springframework.security.core.Authentication; //for getting logged in user info
+import org.springframework.security.core.context.SecurityContextHolder;
+
 @RestController
 public class StarbucksOrderController {
 
@@ -215,6 +218,7 @@ public class StarbucksOrderController {
 
 	@PostMapping("/order/register/{regid}/pay/{cardnum}")
 	StarbucksCard processOrder(@PathVariable String regid, @PathVariable String cardnum) {
+		Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
 		System.out.println("Pay for Order: Reg ID = " + regid + " Using Card = " + cardnum) ;
 		StarbucksOrder active = orders.get(regid);
 		if (active == null) {
@@ -227,39 +231,34 @@ public class StarbucksOrderController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Clear Paid Active Order!");
 		}
 		StarbucksCard card = cardsRepository.findByCardNumber(cardnum);
+		//User user = ; 
+
 		if(card == null) {
 
 		}
 
 		double price = active.getTotal();
 		double balance = card.getBalance();
+
+		//Add reward points to user when balance is paid 
 		if(balance - price < 0) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Insufficient Funds on Card!");
 		}
+
+		//TODO: Add points from transaction 
+		//calculate points
+		int reward = (int) price; //1 point for every full $1, ROUND DOWN 
 		double new_balance = balance-price;
 		card.setBalance(new_balance);
-		String status = "Paid with Card: " + cardnum + " Balance: $" + new_balance + ".";
+		//user.setPoints(user.getPoints+reward);
+
+		String status = "Paid with Card: " + cardnum + " Balance: $" + new_balance + ".\n Points earned: " + reward;
 		active.setStatus(status);
 		cardsRepository.save(card);
+		//save to user 
 		repository.save(active);
 		return card;
 
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
