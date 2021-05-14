@@ -356,18 +356,25 @@ public class PaymentsController {
 
 
     @ModelAttribute("loggedInUser")
-    public User globalUserObject(@ModelAttribute("user") @Validated UserRegistrationDto userDto, BindingResult result,  Model model){
+    public List<User> globalUserObject(@ModelAttribute("user") @Validated UserRegistrationDto userDto, BindingResult result,  Model model){
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
 
-        if(loggedInUser instanceof AnonymousAuthenticationToken) return null;
+        if(loggedInUser instanceof AnonymousAuthenticationToken || loggedInUser == null) return new ArrayList<>();
+
 
         String email = loggedInUser.getName(); 
-        User user = userR.findByEmail(email);
-        String firstname = user.getFirstName();
-        model.addAttribute("firstName", firstname);
-        model.addAttribute("emailAddress", email);
-        return user;
-
+        List<User> customerizedUser = userR.findByEmail(email);
+        if(!customerizedUser.isEmpty()){
+            String username = customerizedUser.get(0).getUsername();
+            model.addAttribute("username", username);
+        }else{
+            List<User> oktaUser = userR.findByUserId(email);
+            if(oktaUser.isEmpty()) return new ArrayList<>();
+            customerizedUser = oktaUser;
+            String username = oktaUser.get(0).getAuthName();
+            model.addAttribute("username", username);
+        }
+        return customerizedUser;
     }
 
 }

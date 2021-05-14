@@ -38,8 +38,6 @@ public class MainController {
 
 
     @GetMapping("/")
-
-  
     public ModelAndView home(@AuthenticationPrincipal OidcUser user) {
         ModelAndView mav = new ModelAndView();
         if(user != null){
@@ -70,12 +68,12 @@ public class MainController {
        
         mav.setViewName("homePage");
         return mav;
-
-  
-  
-    public String home(){
-        return "newhome";
     }
+  
+  
+    // public String home(){
+    //     return "newhome";
+    // }
 
     @Autowired
     UserRepository userR;
