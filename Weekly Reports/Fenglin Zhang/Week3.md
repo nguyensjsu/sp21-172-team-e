@@ -13,7 +13,7 @@
 * First, configure application.property to connect MySQL and create user and role model
 * Second, use DAO pattern to build communication between databases and http request
 * Third, optimized frontend more responsive with css and js
-  https://github.com/nguyensjsu/sp21-172-team-e/pull/10/commits/34dbda87efe68fde1e3e8fc7d2ef416a6e32a9c9
+  https://github.com/nguyensjsu/sp21-172-team-e/pull/12/commits/4f5e22fba9392d4d3b47c1ecde809ba60ed54407
 ## Challenges
 
 * Bootstrap modal is hard... need to read documentation many times

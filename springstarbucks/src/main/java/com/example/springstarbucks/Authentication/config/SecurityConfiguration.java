@@ -1,5 +1,4 @@
 package com.example.springstarbucks.Authentication.config;
-
 import com.example.springstarbucks.Authentication.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -43,7 +43,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/js/**",
             "/css/**",
             "/images/**",
-            "/icons/**").permitAll()
+            "/icons/**",
+            "/login/oauth2/authorization/**",
+            "/login/oauth2/*",
+            "/login/oauth2/callback/okta").permitAll()
         .anyRequest().authenticated()
         .and()
         .formLogin()
@@ -55,6 +58,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .clearAuthentication(true)
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
         .logoutSuccessUrl("/?logout")
-        .permitAll();
+        .permitAll()
+        .and()
+        .oauth2Client()
+        .and()
+        .oauth2Login()
+        .loginPage("/login")
+        .authorizationEndpoint()
+        .baseUri("/login/oauth2/authorization");
     }
 }
