@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<html>
+    <div th:include="navbar.html::navbar"></div>
+    <div class="blockFiller"></div>
+</html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:th="http://www.thymeleaf.org">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -8,9 +12,7 @@
         <link rel="stylesheet" th:href="@{/styles.css}" />
         
     </head>
-    <h1 align="center"> Rewards </h1>
-    <div th:include="home.html::base">
-    </div>
+
 
     <body> 
         <h1> Welcome to Rewards Page</h1>
