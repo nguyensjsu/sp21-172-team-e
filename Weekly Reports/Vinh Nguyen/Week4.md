@@ -21,4 +21,5 @@
 * I also had issues with thymeleaf fragments. The fragements would not be placed correctly leading to a lot of misplaced containers. 
     * To fix this, I had to look up the definitions for th:fragment, th:include, and th:replace and understand how they work and learned how to override the templates on different pages
 * Another challenege was now that the user is authenticated, I have to figure out how we can allow post methods, because it always results in a forbidden action error 403
+    * Fixed: just needed to add th:action="@{/pay/{id}(id=${drinkname})}" in the forms 
     

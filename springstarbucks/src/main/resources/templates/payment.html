@@ -19,7 +19,7 @@
         <h1> Pay for your order</h1>
 
         <!-- FORM SECTION -->
-<form name="form" th:object="${command}" method="post" action="">
+<form name="form" th:object="${command}" method="post" th:action="@{/pay/{id}(id=${drinkname})}">
 
     <table style="width:100%">
         <tr>
@@ -217,7 +217,7 @@
 
           </div>
 
-          <input type="submit" name="action" id="process-payment" value="Process Payment" class="btn">
+          <input type="submit" name="action" id="process-payment" method ="post" value="Process Payment" class="btn">
           <br/>
           <br/>
           <br/>
