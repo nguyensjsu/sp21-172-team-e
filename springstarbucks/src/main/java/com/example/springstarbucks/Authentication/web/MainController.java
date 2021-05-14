@@ -66,7 +66,7 @@ public class MainController {
             mav.addObject("isAdmin",isAdmin);
         }
        
-        mav.setViewName("homePage");
+        mav.setViewName("newhome");
         return mav;
     }
   
