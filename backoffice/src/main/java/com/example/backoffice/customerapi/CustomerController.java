@@ -55,7 +55,7 @@ class CustomerController{
     }
 
     //@PostMapping
-    @RequestMapping(value="/backoffice", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public String postAction(@Valid @ModelAttribute("customer") Customer customer,  
                             @RequestParam(value="action", required=true) String action,
                             Model model) {
