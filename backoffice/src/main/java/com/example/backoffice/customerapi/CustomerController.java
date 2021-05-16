@@ -54,22 +54,8 @@ class CustomerController{
         return "backoffice" ; //page to return to
     }
 
-    /*
-    @GetMapping 
-    public String viewCustomers(){
-
-    }
-    */
-
-    /* 
-    @RequestMapping(value="/", method = RequestMethod.POST)
-    public String postAction(@Valid @ModelAttribute("customer") Customer customer,  
-                            @RequestParam(value="action", required=true) String action,
-                            Errors errors, Model model, HttpServletRequest request) {
-    */
-
     //@PostMapping
-    @RequestMapping(value="/", method = RequestMethod.POST)
+    @RequestMapping(value="/backoffice", method = RequestMethod.POST)
     public String postAction(@Valid @ModelAttribute("customer") Customer customer,  
                             @RequestParam(value="action", required=true) String action,
                             Model model) {
@@ -79,39 +65,6 @@ class CustomerController{
 
         model.addAttribute( "message", "Message posted!" ) ;
 
-        return "backoffice";
+        return "showCustomer";
     }
-
-    /*
-
-    @RequestMapping(method=RequestMethod.GET)
-    public String rewardsForm(Model model) {
-        model.addAttribute("customer", new Customer());
-        //model.addAttribute("customer", new Customer());
-        return "customer";
-    }
-
-    //@PostMapping("/add")
-    @RequestMapping(method=RequestMethod.POST)
-    public String rewardsSubmit(@ModelAttribute("customer") Customer customer, Model model) {
-      model.addAttribute("customer", customer);
-      model.addAttribute("email", email);
-      return "result";
-    }
-    */
-
-    /*
-    @PostMapping("/add")
-    Message addPoints(@PathVariable String email, @PathVariable String points){
-        Customer customer = repository.findByEmail(email);
-        int rewards = Integer.parseInt(points); //get points to add 
-        customer.setRewards(customer.getRewards()+rewards);
-        repository.save(customer);
-        Message msg = new Message(); 
-        msg.setStatus("New points : " + customer.getRewards());
-        return msg;
-
-        //TODO: Add ResponseStatusException 
-    }
-    */
 }
