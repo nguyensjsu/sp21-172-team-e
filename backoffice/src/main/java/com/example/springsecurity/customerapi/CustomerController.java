@@ -46,7 +46,8 @@ class CustomerController{
         this.repository = repository; 
     }
 
-    @GetMapping
+    //@GetMapping
+    @RequestMapping(method = RequestMethod.GET)
     public String getAction( @ModelAttribute("command") Customer customer, 
                             Model model) {
         model.addAttribute("customer", customer);
@@ -60,17 +61,25 @@ class CustomerController{
     }
     */
 
-    @PostMapping
+    /* 
+    @RequestMapping(value="/", method = RequestMethod.POST)
     public String postAction(@Valid @ModelAttribute("customer") Customer customer,  
                             @RequestParam(value="action", required=true) String action,
                             Errors errors, Model model, HttpServletRequest request) {
+    */
 
-        Customer currentCustomer = repository.findByEmail(customer.getEmail()); //get email from form and use it to find the customer
+    //@PostMapping
+    @RequestMapping(value="/", method = RequestMethod.POST)
+    public String postAction(@Valid @ModelAttribute("customer") Customer customer,  
+                            @RequestParam(value="action", required=true) String action,
+                            Model model) {
+
+        //Customer currentCustomer = repository.findByEmail(customer.getEmail()); //get email from form and use it to find the customer
         //model.addAttribute("CurrentCustomer", currentCustomer);
 
         model.addAttribute( "message", "Message posted!" ) ;
 
-        return "creditcards";
+        return "backoffice";
     }
 
     /*

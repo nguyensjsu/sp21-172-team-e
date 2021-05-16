@@ -1,41 +1,42 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="utf-8"/>
-<title>Show Customers</title>
-</head>
-<body>
-<div align="center">
-    <h1>Product List</h1>
-    <a href="/new">Create New Product</a>
-    <br/><br/>
-    <table border="1" cellpadding="10">
-        <thead>
-            <tr>
-                <th>Product ID</th>
-                <th>Name</th>
-                <th>Brand</th>
-                <th>Made In</th>
-                <th>Price</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="product : ${listProducts}">
-                <td th:text="${product.id}">Product ID</td>
-                <td th:text="${product.name}">Name</td>
-                <td th:text="${product.brand}">Brand</td>
-                <td th:text="${product.madein}">Made in</td>
-                <td th:text="${product.price}">Price</td>
-                <td>
-                    <a th:href="/@{'/edit/' + ${product.id}}">Edit</a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a th:href="/@{'/delete/' + ${product.id}}">Delete</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>   
-</body>
-</html>
+<!--Starbucks background image: 
+  https://unsplash.com/photos/-O3DdgS0h6c?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink-->
+
+  <!DOCTYPE html>
+  <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      <head>
+          <title>BackOffice</title>
+          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+          <link rel="stylesheet" href="style.css">
+          <script src="script.js"></script>
+      </head>
+      <body>
+          <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+  
+          <h2>Add Reward Points to Customer Account</h2>
+          <!--th:action should have the name of the API? th:action="@{/add}"-->
+          <!--th:action removed for now-->
+          <!--th:object should have the name of the model attribute-->
+          <form action="#" th:action="@{/}" th:object="${customer}" method="post">
+  
+            <!--To list customer information-->
+            <div class="CurrentCustomer">
+              <div class="message">
+                <span th:text="${message}" />
+            <p>
+              <!--th:field should match the variable name in the model/entity-->
+                Customer Email: <input type="text" th:field="*{email}"> 
+            </p>
+            <p>
+                Points to be Added: <input type="text" th:field="*{rewardPoints}">
+            </p>
+            <p>
+              <input type="submit" name="action" id="process-payment" value="Process Payment" class="btn">
+            </p>
+          </form>
+  
+          <form th:action="@{/logout}" method="post">
+              <input type="submit" value="Sign Out"/>
+          </form>
+      </body>
+  </html>
