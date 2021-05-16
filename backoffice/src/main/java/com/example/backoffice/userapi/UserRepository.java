@@ -1,12 +1,12 @@
-package com.example.backoffice.userapi;
+// package com.example.backoffice.userapi;
 
-//import com.example.springstarbucks.Authentication.model.User;
+// import com.example.backoffice.userapi.User;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+// import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.stereotype.Repository;
 
 
-@Repository
-public interface UserRepository extends JpaRepository<User, Long>{
-    User findByEmail(String email);
-}
+// @Repository
+// public interface UserRepository extends JpaRepository<User, Long>{
+//     User findByEmail(String email);
+// }
