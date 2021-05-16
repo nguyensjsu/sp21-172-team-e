@@ -39,7 +39,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @Controller
 @RequestMapping("/backoffice")
 class CustomerController{
-
+    @Autowired
     private final CustomerRepository repository; 
 
     CustomerController(CustomerRepository repository){
@@ -49,35 +49,26 @@ class CustomerController{
     @GetMapping
     public String getAction( @ModelAttribute("command") Customer customer, 
                             Model model) {
-  
-        /* Render View */
-        //model.addAttribute( "message", "Hello World!" ) ;
         model.addAttribute("customer", customer);
-        //model.addAttribute("email", email);
-        return "backoffice" ; //page to return to?
+        return "backoffice" ; //page to return to
+    }
+
+    /*
+    @GetMapping 
+    public String viewCustomers(){
 
     }
+    */
 
     @PostMapping
     public String postAction(@Valid @ModelAttribute("customer") Customer customer,  
                             @RequestParam(value="action", required=true) String action,
                             Errors errors, Model model, HttpServletRequest request) {
 
-        // PaymentsCommand payment = new PaymentsCommand(); 
+        Customer currentCustomer = repository.findByEmail(customer.getEmail()); //get email from form and use it to find the customer
+        //model.addAttribute("CurrentCustomer", currentCustomer);
 
-        // //email
-        // payment.setEmail(command.getEmail());
-
-        // repository.save(payment); 
-    
-        // /* Render View */
-        // model.addAttribute( "message", "Hello There Again!" ) ;
-     
-        // if (errors.hasErrors()) {
-        //     return "creditcards";
-        // }
-
-        // model.addAttribute( "message", "Thank You for Your Payment!" ) ;
+        model.addAttribute( "message", "Message posted!" ) ;
 
         return "creditcards";
     }

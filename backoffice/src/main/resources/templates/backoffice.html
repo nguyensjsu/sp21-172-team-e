@@ -1,3 +1,6 @@
+<!--Starbucks background image: 
+  https://unsplash.com/photos/-O3DdgS0h6c?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink-->
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
@@ -15,6 +18,11 @@
         <!--th:action removed for now-->
         <!--th:object should have the name of the model attribute-->
         <form action="#" th:object="${customer}" method="post">
+
+          <!--To list customer information-->
+          <div class="CurrentCustomer">
+            <div class="message">
+              <span th:text="${message}" />
           <p>
             <!--th:field should match the variable name in the model/entity-->
               Customer Email: <input type="text" th:field="*{email}"> 
