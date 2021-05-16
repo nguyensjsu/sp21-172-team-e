@@ -11,9 +11,13 @@
         <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 
         <h2>Add Reward Points to Customer Account</h2>
-        <form action="#" th:action="@{/add}" th:object="${customer}" method="post">
+        <!--th:action should have the name of the API? th:action="@{/add}"-->
+        <!--th:action removed for now-->
+        <!--th:object should have the name of the model attribute-->
+        <form action="#" th:object="${customer}" method="post">
           <p>
-              Customer Email: <input type="text" th:field="*{email}">
+            <!--th:field should match the variable name in the model/entity-->
+              Customer Email: <input type="text" th:field="*{email}"> 
           </p>
           <p>
               Points to be Added: <input type="text" th:field="*{rewardPoints}">
