@@ -94,6 +94,7 @@ public class WebController {
 		String uri = "http://localhost:8080/cards";
 	    RestTemplate restTemplate = new RestTemplate();
 	    String cardsList = restTemplate.getForObject(uri, String.class);
+		System.out.println(cardsList);
 		model.addAttribute("cardsList", cardsList);
 		return "cards";
 	}

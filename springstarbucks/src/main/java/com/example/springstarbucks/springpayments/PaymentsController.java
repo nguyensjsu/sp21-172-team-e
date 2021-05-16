@@ -281,7 +281,7 @@ public class PaymentsController {
         auth.billToZipCode = command.getZip();
         auth.billToPhone = command.getPhone();
         auth.billToEmail = command.getEmail();
-        auth.transactionAmount = "30.00";
+        auth.transactionAmount = drink.getCost();
         auth.transactionCurrency = "USD";
         auth.cardNumnber = command.getCardnum();
         auth.cardExpMonth = months.get(command.getExpmonth());
@@ -313,7 +313,7 @@ public class PaymentsController {
         if(authValid) {
             capture.reference = order_num;
             capture.paymentId = authResponse.id;
-            capture.transactionAmount = "30.00";
+            capture.transactionAmount = drink.getCost();
             capture.transactionCurrency = "USD";
             System.out.println("\n\nCapture Request: " + capture.toJson());
             captureResponse = api.capture(capture);
@@ -328,7 +328,7 @@ public class PaymentsController {
         
         if (authValid && captureValid) {
             command.setOrderNumber(order_num);
-            command.setTransactionAmount("30.00");
+            command.setTransactionAmount(drink.getCost());
             command.setTransactionCurrency("USD");
             command.setAuthId(authResponse.id);
             command.setAuthStatus(authResponse.status);
