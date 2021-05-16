@@ -1,36 +1,27 @@
-<!-- TEST PAGE for Backoffice -->
-<!-- Backoffice Functions: -->
-<!-- See any customer's rewards, fix any issues (i.e. add missing credit) -->
-<!-- TODO: change field names, add additional lookup methods? -->>
-<!-- TODO: buttons to navigate between functions 
-    (see all customers, search particular customer, add points)-->
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>title</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-        <!-- FORM SECTION -->
-    <form name="form" th:object="${starbucksCard}" method="post" th:action="@{/}">
-        <label for="ccnum">Starbucks Rewards Card Number</label>
-              <input type="text" id="ccnum" name="cardnumber" placeholder="555555555" th:field="*{creditCardNo}">
-              <div class="alert alert-warning" th:if="${#fields.hasErrors('creditCardNo')}" th:errors="*{creditCardNo}"></div> 
-              <label for="ccnum">Credit points to be added: </label>
-              <input type="text" id="ccnum" name="cardnumber" placeholder="$10" th:field="*{creditCardNo}">
-              <div class="alert alert-warning" th:if="${#fields.hasErrors('creditCardNo')}" th:errors="*{creditCardNo}"></div> 
-        <!-- SUBMISSION BUTTON -->
-        <input type="submit" name="action" id="process-payment" value="Process Payment" class="btn">
-    </form>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>BackOffice</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 
-    <form name="form" th:object="${starbucksCard}" method="post" th:action="@{/}">
-      <label for="ccnum">Search by Card Number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="555555555" th:field="*{creditCardNo}">
-            <div class="alert alert-warning" th:if="${#fields.hasErrors('creditCardNo')}" th:errors="*{creditCardNo}"></div> 
-      <!-- SUBMISSION BUTTON -->
-      <input type="submit" name="action" id="process-payment" value="Process Payment" class="btn">
-  </form>
-  </body>
+            <!-- FORM SECTION -->
+        <form name="form" action="customer" method="post">
+
+            <label for="email">Search Customer Account by Email</label>
+                <input type="text" id="email" name="email" placeholder="customer@email.com" th:field="*{email}">
+           
+            <!-- SUBMISSION BUTTON -->
+            <input type="submit" name="action" id="process-payment" value="Process Payment" class="btn">
+        </form>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </body>
 </html>
