@@ -1,20 +1,25 @@
 package com.example.backoffice.customerapi;
 
+import com.example.backoffice.customerapi.Customer;
+
 import java.util.List;
 import java.util.Random;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.validation.Errors;
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,8 +35,9 @@ import org.springframework.security.core.Authentication; //for getting logged in
                                                         //TODO: Remove?
 import org.springframework.security.core.context.SecurityContextHolder;
 
+@Slf4j
 @Controller
-@RequestMapping("/customer")
+@RequestMapping("/backoffice")
 class CustomerController{
 
     private final CustomerRepository repository; 
@@ -40,17 +46,44 @@ class CustomerController{
         this.repository = repository; 
     }
 
-    class Message {
-		private String status;
+    @GetMapping
+    public String getAction( @ModelAttribute("command") Customer customer, 
+                            Model model) {
+  
+        /* Render View */
+        //model.addAttribute( "message", "Hello World!" ) ;
+        model.addAttribute("customer", customer);
+        //model.addAttribute("email", email);
+        return "backoffice" ; //page to return to?
 
-		public String getStatus() {
-			return status;
-		}
+    }
 
-		public void setStatus(String msg) {
-			status = msg;
-		}
-	}
+    @PostMapping
+    public String postAction(@Valid @ModelAttribute("customer") Customer customer,  
+                            @RequestParam(value="action", required=true) String action,
+                            Errors errors, Model model, HttpServletRequest request) {
+
+        // PaymentsCommand payment = new PaymentsCommand(); 
+
+        // //email
+        // payment.setEmail(command.getEmail());
+
+        // repository.save(payment); 
+    
+        // /* Render View */
+        // model.addAttribute( "message", "Hello There Again!" ) ;
+     
+        // if (errors.hasErrors()) {
+        //     return "creditcards";
+        // }
+
+        // model.addAttribute( "message", "Thank You for Your Payment!" ) ;
+
+        return "creditcards";
+    }
+
+    /*
+
     @RequestMapping(method=RequestMethod.GET)
     public String rewardsForm(Model model) {
         model.addAttribute("customer", new Customer());
@@ -62,8 +95,10 @@ class CustomerController{
     @RequestMapping(method=RequestMethod.POST)
     public String rewardsSubmit(@ModelAttribute("customer") Customer customer, Model model) {
       model.addAttribute("customer", customer);
+      model.addAttribute("email", email);
       return "result";
     }
+    */
 
     /*
     @PostMapping("/add")

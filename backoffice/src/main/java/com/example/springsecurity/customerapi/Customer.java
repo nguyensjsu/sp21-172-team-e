@@ -107,12 +107,12 @@ public class Customer {
         this.roles = roles;
     }
 
-    public int getRewards(){
+    public int getRewardPoints(){
         return this.rewardPoints;
     }
     
-    public void setRewards(int rewards){
-        this.rewardPoints = rewards;
+    public void setRewardPoints(int rewardPoints){
+        this.rewardPoints = rewardPoints;
     }
     
 }

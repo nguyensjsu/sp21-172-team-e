@@ -10,14 +10,17 @@
     <body>
         <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 
-            <!-- FORM SECTION -->
-        <form name="form" action="customer" method="post">
-
-            <label for="email">Search Customer Account by Email</label>
-                <input type="text" id="email" name="email" placeholder="customer@email.com" th:field="*{email}">
-           
-            <!-- SUBMISSION BUTTON -->
+        <h2>Add Reward Points to Customer Account</h2>
+        <form action="#" th:action="@{/add}" th:object="${customer}" method="post">
+          <p>
+              Customer Email: <input type="text" th:field="*{email}">
+          </p>
+          <p>
+              Points to be Added: <input type="text" th:field="*{rewardPoints}">
+          </p>
+          <p>
             <input type="submit" name="action" id="process-payment" value="Process Payment" class="btn">
+          </p>
         </form>
 
         <form th:action="@{/logout}" method="post">
