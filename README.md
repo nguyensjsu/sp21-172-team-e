@@ -230,8 +230,26 @@ Delete all Orders (Use for Unit Testing Teardown)
 Which integrations were selected?
 
 ## Cloud Deployments
+* Deployment pod screenshots
+  * ![pic2](cloud_images/pic2.png)
+  * ![pic3](cloud_images/pic3.png)
+* Service screenshots
+  * ![pic4](cloud_images/pic4.png)
+  * ![pic5](cloud_images/pic5.png)
+  * ![pic6](cloud_images/pic6.png)
+* Load balancer Ingress screenshots
+  * ![pic7](cloud_images/pic7.png)
+  * ![pic8](cloud_images/pic8.png)
+* MYSQL screenshots
+  * ![pic9](cloud_images/pic9.png)
+  * ![pic10](cloud_images/pic10.png)
+* Results 
+  * ![pic1](cloud_images/pic1.png)
+
 Design Notes on GitHub an Architecture Diagram of the overall Deployment.
+* Our cloud deployment allows users to purchase items through our online store. We have a loadbalancer so that we can control the traffic of users when they want to buy drinks
 How does your Team's System Scale?  Can it handle > 1 Million Mobile Devices?
+* As long as we can pay for the storage for user accounts, orders, rewards... and pay more money for more scaling the servers up to allow 1 million concurrent users, then it is possible.
 
 ## Technical Requirements
 Discussion with screenshot evidence of how each technical requirement is meet.
