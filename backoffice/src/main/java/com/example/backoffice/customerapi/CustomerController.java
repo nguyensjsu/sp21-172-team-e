@@ -62,7 +62,13 @@ class CustomerController{
 
         Customer currentCustomer = repository.findByEmail(customer.getEmail()); //get email from form and use it to find the customer
         int rewards = customer.getRewardPoints(); //get reward points from form
-        currentCustomer.setRewardPoints(currentCustomer.getRewardPoints()+rewards); //add reward points from form to repo
+        if (action.equalsIgnoreCase("Add Points")){
+            currentCustomer.setRewardPoints(currentCustomer.getRewardPoints()+rewards); //add reward points from form to repo
+        }
+        else if (action.equalsIgnoreCase("Subtract Points")){
+            currentCustomer.setRewardPoints(currentCustomer.getRewardPoints()-rewards); //subtract reward points from form to repo
+        }
+        
         repository.save(currentCustomer); //update repo
         model.addAttribute("CurrentCustomer", currentCustomer); //display 
 

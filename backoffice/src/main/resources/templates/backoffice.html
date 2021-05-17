@@ -45,10 +45,18 @@
               Customer Email: <input type="text" th:field="*{email}"> 
           </p>
           <p>
-              Points to be Added: <input type="text" th:field="*{rewardPoints}">
+              Operation: 
+              <input type="radio" id="add" name="action" value="Add Points">
+              <label for="add">Add</label>
+              <input type="radio" id="subtract" name="action" value="Subtract Points">
+              <label for="add">Subtract</label>
+          </p> 
+          <p>
+              Reward Points: <input type="text" th:field="*{rewardPoints}">
           </p>
           <p>
-            <input type="submit" name="action" id="process-payment" value="Process Payment" class="btn">
+            <!--Submits the action type, how can I change the action?-->
+            <input type="submit" class="btn">
           </p>
         </form>
 
