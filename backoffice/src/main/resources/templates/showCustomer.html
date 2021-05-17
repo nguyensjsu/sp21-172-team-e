@@ -1,0 +1,42 @@
+<!--Starbucks background image: 
+  https://unsplash.com/photos/-O3DdgS0h6c?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink-->
+
+  <!DOCTYPE html>
+  <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      <head>
+          <title>BackOffice</title>
+          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+          <link rel="stylesheet" href="style.css">
+          <script src="script.js"></script>
+      </head>
+      <body>
+          <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+  
+          <h2>Add Reward Points to Customer Account</h2>
+          <!--th:action should have the name of the API? th:action="@{/add}"-->
+          <!--th:action removed for now-->
+          <!--th:object should have the name of the model attribute-->
+          <form action="#" th:action="@{/}" th:object="${customer}" method="post">
+  
+            <!--To list customer information-->
+            <div class="CurrentCustomer">
+              <div class="message">
+                <span th:text="${message}" />
+            <p>
+              <!--th:field should match the variable name in the model/entity-->
+                Customer Email: <input type="text" th:field="*{email}"> 
+            </p>
+            <p>
+                Points to be Added: <input type="text" th:field="*{rewardPoints}">
+            </p>
+            <p>
+              <input type="submit" name="action" id="process-payment" value="Process Payment" class="btn">
+            </p>
+          </form>
+  
+          <form th:action="@{/logout}" method="post">
+              <input type="submit" value="Sign Out"/>
+          </form>
+      </body>
+  </html>

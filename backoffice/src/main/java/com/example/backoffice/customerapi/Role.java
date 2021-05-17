@@ -1,4 +1,4 @@
-package com.example.backoffice.userapi;
+package com.example.backoffice.customerapi;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

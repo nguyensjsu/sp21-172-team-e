@@ -1,4 +1,4 @@
-package com.example.backoffice.userapi;
+package com.example.backoffice.customerapi;
 
 import java.util.Collection;
 
@@ -17,7 +17,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
-public class User {
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -44,11 +44,11 @@ public class User {
     )
     private Collection<Role> roles;
 
-    public User(){
+    public Customer(){
 
     }
 
-    public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+    public Customer(String firstName, String lastName, String email, String password, Collection<Role> roles) {
        
         this.firstName = firstName;
         this.lastName = lastName;
@@ -107,12 +107,12 @@ public class User {
         this.roles = roles;
     }
 
-    public int getRewards(){
+    public int getRewardPoints(){
         return this.rewardPoints;
     }
     
-    public void setRewards(int rewards){
-        this.rewardPoints = rewards;
+    public void setRewardPoints(int rewardPoints){
+        this.rewardPoints = rewardPoints;
     }
     
 }
