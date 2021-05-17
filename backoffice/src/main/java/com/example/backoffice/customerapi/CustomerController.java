@@ -46,21 +46,6 @@ class CustomerController{
         this.repository = repository; 
     }
 
-    /*
-    public List<Customer> listAll(){
-        return repository.findAll(); 
-    }
-    */
-
-    /*
-    @RequestMapping(value="/displayAll", method = RequestMethod.POST)
-    public String viewAllCustomers (@ModelAttribute("command") Customer customer, Model model){
-        List<Customer> listCustomers = repository.findAll(); 
-        model.addAttribute("listCustomers", listCustomers);
-        return "displayAll";
-    }
-    */
-
     //@GetMapping
     @RequestMapping(value="/backoffice", method = RequestMethod.GET)
     public String getAction( @ModelAttribute("command") Customer customer, 

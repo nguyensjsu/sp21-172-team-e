@@ -11,14 +11,6 @@
     </head>
     <body>
         <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-
-        <!--SEARCH USER TAB-->
-        <h2>Search User</h2>
-        <p>SEARCH USER</p>
-
-      <!--DISPLAY USERS-->
-        <button onclick="location.href='displayAll';" id="myButton" class="float-left submit-button">Display All Users</button>
-
         <!--EDIT POINTS TAB-->
           <h2>Add Reward Points to Customer Account</h2>
           <!--th:action should have the name of the API? th:action="@{/add}"-->
