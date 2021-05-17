@@ -37,7 +37,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 @Slf4j
 @Controller
-@RequestMapping("/backoffice")
+//@RequestMapping("/backoffice")
 class CustomerController{
     @Autowired
     private final CustomerRepository repository; 
@@ -46,8 +46,23 @@ class CustomerController{
         this.repository = repository; 
     }
 
+    /*
+    public List<Customer> listAll(){
+        return repository.findAll(); 
+    }
+    */
+
+    /*
+    @RequestMapping(value="/displayAll", method = RequestMethod.POST)
+    public String viewAllCustomers (@ModelAttribute("command") Customer customer, Model model){
+        List<Customer> listCustomers = repository.findAll(); 
+        model.addAttribute("listCustomers", listCustomers);
+        return "displayAll";
+    }
+    */
+
     //@GetMapping
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value="/backoffice", method = RequestMethod.GET)
     public String getAction( @ModelAttribute("command") Customer customer, 
                             Model model) {
         model.addAttribute("customer", customer);
@@ -55,7 +70,7 @@ class CustomerController{
     }
 
     //@PostMapping
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value="/backoffice", method = RequestMethod.POST)
     public String postAction(@Valid @ModelAttribute("customer") Customer customer,  
                             @RequestParam(value="action", required=true) String action,
                             Model model) {
@@ -64,14 +79,15 @@ class CustomerController{
         int rewards = customer.getRewardPoints(); //get reward points from form
         if (action.equalsIgnoreCase("Add Points")){
             currentCustomer.setRewardPoints(currentCustomer.getRewardPoints()+rewards); //add reward points from form to repo
+            repository.save(currentCustomer); //update repo
+            model.addAttribute("CurrentCustomer", currentCustomer); //display 
         }
         else if (action.equalsIgnoreCase("Subtract Points")){
             currentCustomer.setRewardPoints(currentCustomer.getRewardPoints()-rewards); //subtract reward points from form to repo
+            repository.save(currentCustomer); //update repo
+            model.addAttribute("CurrentCustomer", currentCustomer); //display 
         }
         
-        repository.save(currentCustomer); //update repo
-        model.addAttribute("CurrentCustomer", currentCustomer); //display 
-
         return "backoffice";
     }
 }
