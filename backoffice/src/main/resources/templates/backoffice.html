@@ -20,9 +20,26 @@
         <form action="#" th:action="@{/backoffice}" th:object="${customer}" method="post">
 
           <!--To list customer information-->
+          <!--TODO: Make table only appear after customer has been searched-->
           <div class="CurrentCustomer">
-            <div class="message">
-              <span th:text="${message}" />
+            <table border="1" cellpadding="10">
+              <thead>
+                  <tr>
+                      <th>Customer ID</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Reward Points</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td th:text="${CurrentCustomer?.id}">Customer ID</td>
+                      <td th:text="${CurrentCustomer?.firstName}">Name</td>
+                      <td th:text="${CurrentCustomer?.email}">Email</td>
+                      <td th:text="${CurrentCustomer?.rewardPoints}">Reward Points</td>
+                  </tr>
+              </tbody>
+          </table>
           <p>
             <!--th:field should match the variable name in the model/entity-->
               Customer Email: <input type="text" th:field="*{email}"> 

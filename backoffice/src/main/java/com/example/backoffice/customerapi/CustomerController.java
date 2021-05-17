@@ -60,11 +60,12 @@ class CustomerController{
                             @RequestParam(value="action", required=true) String action,
                             Model model) {
 
-        //Customer currentCustomer = repository.findByEmail(customer.getEmail()); //get email from form and use it to find the customer
-        //model.addAttribute("CurrentCustomer", currentCustomer);
+        Customer currentCustomer = repository.findByEmail(customer.getEmail()); //get email from form and use it to find the customer
+        int rewards = customer.getRewardPoints(); //get reward points from form
+        currentCustomer.setRewardPoints(currentCustomer.getRewardPoints()+rewards); //add reward points from form to repo
+        repository.save(currentCustomer); //update repo
+        model.addAttribute("CurrentCustomer", currentCustomer); //display 
 
-        model.addAttribute( "message", "Message posted!" ) ;
-
-        return "showCustomer";
+        return "backoffice";
     }
 }
