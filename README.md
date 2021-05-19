@@ -19,7 +19,9 @@ The Bootstrap frontend app connects to backend deployed on GCP through Kong API 
 
 
 ## Cashier's App
-What features were implemented?
+The Cashiers App will be used by our Baristas at each Starbucks store front. Orders will taken directly from the customer and entered into the Cashier's app.
+Cashier's app will call the Starbucks order API to get or delete current order. There is also a mini menu that allow employees to make new order and pay by card. 
+![login_page](images/chashiers_app.png)
 
 ## Backoffice Help Desk App
 What features were implemented?
@@ -225,6 +227,7 @@ Delete all Orders (Use for Unit Testing Teardown)
         { 
           "Status": "All Orders Cleared!" 
         } 
+        
 
 ## Integrations 
 Which integrations were selected?
@@ -245,6 +248,29 @@ Which integrations were selected?
   * ![pic10](cloud_images/pic10.png)
 * Results 
   * ![pic1](cloud_images/pic1.png)
+
+### Kong API Gateway
+* Deployment pod screenshots
+  * ![pic2](images/depolyment.png)
+
+* Service screenshots
+  * ![pic2](images/service.png)
+
+* Jumpbox
+  * ![pic2](images/jumpbox.png)
+
+* ingress-controller
+  * ![pic2](images/ingress-controller.png)
+
+* Test Kong Api Endpoint
+  * ![pic2](images/test-kong-api-endpoint.png)
+
+* Apply API key
+  * ![pic2](images/apply-api-key.png)
+
+* ping test from postman
+  * ![pic2](images/ping.png)
+
 
 Design Notes on GitHub an Architecture Diagram of the overall Deployment.
 * Our cloud deployment allows users to purchase items through our online store. We have a loadbalancer so that we can control the traffic of users when they want to buy drinks
