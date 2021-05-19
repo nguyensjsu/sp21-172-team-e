@@ -282,5 +282,13 @@ How does your Team's System Scale?  Can it handle > 1 Million Mobile Devices?
 
 ## Technical Requirements
 Discussion with screenshot evidence of how each technical requirement is meet.
+* Cashier's App met, screenshots above
+* Backoffice Help desk met, screenshots above
+* Online store met, screenshots above
+* REST API met, rest commands above
+  * Screenshot one example of our API, GET cards 
+    * ![pic12](cloud_images/pic13.png)
+* Integrations met via Cybersource, screenshots above
+* Cloud deployments met, screenshots above
 
 
