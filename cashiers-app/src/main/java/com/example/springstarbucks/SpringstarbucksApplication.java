@@ -1,13 +1,13 @@
-package com.example.backoffice;
+package com.example.springstarbucks;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BackOfficeApplication {
+public class SpringstarbucksApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BackOfficeApplication.class, args);
+		SpringApplication.run(SpringstarbucksApplication.class, args);
 	}
 
 }
