@@ -13,10 +13,14 @@
   </head>
   <body>
     <h1>~ <u>Starbucks Cashier App </u> ~</h1>
-    <div class ="myDiv">
-        <textarea id="w3review" name="w3review" rows="6" cols="50" readonly>
-            Starbucks Reserved Order
-        </textarea>
+    <div class ="myDiv6" th:if= "${order.id != null}">
+        <h4>Starbucks Reserved Order</h4>
+        ID: <p th:text="${order.id}"></p><br/>
+        Drinks: <p th:text="${order.drink}"></p><br/>
+        Milk: <p th:text="${order.milk}"></p><br/>
+        Size: <p th:text="${order.size}"></p><br/>
+        Total: $ <p th:text="${order.total}"></p><br/>
+        Status: <p th:text="${order.status}"></p>
     </div>
     <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
     <!-- <form  th:object="${orders}" method="post" th:action="@{/order/register}" > -->
@@ -61,11 +65,17 @@
     </div>
     <div class ="myDiv5">
         <row>
-            <form action="/findorder" method="get">
-                <input type="submit" name="action" id="process-payment" value="Get Order" class="btn2">
+            <input type="submit" name="action" id="process-payment" value="Get Order" class="btn2">
+
+            <form action="/order/pay" method="post">
+                <input type="hidden" th:value="${order.id}"  class="btn-primary btn-sm" id="id" name="id">
+                <input type="hidden" th:value="498498082" class="btn-primary btn-sm" id="cardnumber" name="cardnumber">
+                <input type="submit" name="action" id="process-payment" value="Place Order" class="btn3">
             </form>
-            <input type="submit" name="action" id="process-payment" value="Place Order" class="btn3">
-            <input type="submit" name="action" id="process-payment" value="Clear Order" class="btn4">
+            <form action="/deleteorder" method="get">
+                <input type="hidden" th:value="${order.id}"  class="btn-primary btn-sm" id="id" name="id">
+                <input type="submit" name="action" id="id" class="btn4" value="Clear Order">
+            </form>
         </row>  
     </div>
 
