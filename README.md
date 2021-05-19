@@ -228,6 +228,9 @@ Delete all Orders (Use for Unit Testing Teardown)
 
 ## Integrations 
 Which integrations were selected?
+* We used Cybersource for handling user's online transaction when purchasing drinks
+  * ![pic11](cloud_images/pic11.png)
+  * ![pic12](cloud_images/pic12.png)
 
 ## Cloud Deployments
 * Deployment pod screenshots
