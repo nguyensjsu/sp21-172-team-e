@@ -24,7 +24,9 @@ Cashier's app will call the Starbucks order API to get or delete current order. 
 ![login_page](images/chashiers_app.png)
 
 ## Backoffice Help Desk App
-What features were implemented?
+The backoffice help desk has a login and signout using spring security. Behind this layer of security there is a page where a user can search up a customer's account by their email address and either add or subtract reward points from the account. The customer's account ID, first name, email, and current number of reward points are displayed. 
+
+![backoffice](images/backoffice.png)
 
 ## Online Store 
 
