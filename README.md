@@ -38,17 +38,6 @@ User should enter username and password in order to login.
 A registration page enables users to independently register and gain access to our Starbucks system. User have to enter First Name, Last Name, email, and password to finish the register form.
 ![login_page](images/registration_page.png)
 
-
-#### * Menu page
-Customer can choose drinks from Menu. Right now we only support four drinks: Frappuccion, Cappuccion, Latte and Fresh Coffee.
-![login_page](images/menu_page.png)
-
-
-#### * Payment page
-We reuse lab 7 code, build a Spring Payments Page and adding Server Side Form Validation and integration with the CyberSource Payments Gateway. Customer can pay the coffee in this page with their credit card.
-![login_page](images/payment_page.png)
-
-
 #### * SSO via Okta
 SSO via Okta button is in on login page and ready to use
 ![SSO_on login_page](images/okta_login.png)
@@ -62,6 +51,15 @@ Once granted authorization from okta, it will redirect back and show the login u
 The logged in user's info is stored into MySQL database to make sure to recognized the old users
 ![SSO_on login_page](images/databases.png)
 
+
+#### * Menu page
+Customer can choose drinks from Menu. Right now we only support four drinks: Frappuccion, Cappuccion, Latte and Fresh Coffee.
+![login_page](images/menu_page.png)
+
+
+#### * Payment page
+We reuse lab 7 code, build a Spring Payments Page and adding Server Side Form Validation and integration with the CyberSource Payments Gateway. Customer can pay the coffee in this page with their credit card.
+![login_page](images/payment_page.png)
 
 ## REST API 
 
