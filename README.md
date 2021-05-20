@@ -48,7 +48,7 @@ Click on the Okta Login Button will redirect to the okta sign-page
 Once granted authorization from okta, it will redirect back and show the login user's name(okta account name), like "Welcome [okta_account name]"
 ![SSO_on login_page](images/redirect_back.png)
 
-The logged in user's info is stored into MySQL database to make sure to recognized the old users
+The logged in user's info is stored into MySQL database to make sure to recognize the user next time
 ![SSO_on login_page](images/database.png)
 
 
