@@ -49,7 +49,7 @@ Once granted authorization from okta, it will redirect back and show the login u
 ![SSO_on login_page](images/redirect_back.png)
 
 The logged in user's info is stored into MySQL database to make sure to recognized the old users
-![SSO_on login_page](images/databases.png)
+![SSO_on login_page](images/database.png)
 
 
 #### * Menu page
