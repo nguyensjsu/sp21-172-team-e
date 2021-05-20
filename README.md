@@ -49,6 +49,20 @@ We reuse lab 7 code, build a Spring Payments Page and adding Server Side Form Va
 ![login_page](images/payment_page.png)
 
 
+#### * SSO via Okta
+SSO via Okta button is in on login page and ready to use
+![SSO_on login_page](images/okta_login.png)
+
+Click on the Okta Login Button will redirect to the okta sign-page
+![SSO_on login_page](images/okta_authrization_page.png)
+
+Once granted authorization from okta, it will redirect back and show the login user's name(okta account name), like "Welcome [okta_account name]"
+![SSO_on login_page](images/redirect_back.png)
+
+The logged in user's info is stored into MySQL database to make sure to recognized the old users
+![SSO_on login_page](images/databases.png)
+
+
 ## REST API 
 
 GET /ping 
